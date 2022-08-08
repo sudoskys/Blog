@@ -643,6 +643,7 @@ site_footer:
   analytics: >
     <span id="lc-sv">本站总访问量为 <span id='number'><i class="fa-solid fa-loader fa-spin fa-fw" aria-hidden="true"></i></span> 次</span>
     <span id="lc-uv">访客数为 <span id='number'><i class="fa-solid fa-loader fa-spin fa-fw" aria-hidden="true"></i></span> 人</span>
+    <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "21a98d4b221647e4b7c80bb6eb82ac22"}'></script><!-- End Cloudflare Web Analytics -->
   # site copyright
   copyright: '[Copyright © since 2019 By Jasmine](/)'
   # You can add your own property here. (Support markdown, for example: br: '<br>')
