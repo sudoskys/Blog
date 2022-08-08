@@ -1,0 +1,22 @@
+- group: 技术交流
+  description:
+  items:
+    - title: Dingyi·s BLOG
+      url: https://blog.dingyi222666.top/about/
+      avatar: http://q1.qlogo.cn/g?b=qq&nk=2187778735&s=140
+      description: Java/安卓/前端
+
+- group: Galgame 同好
+  description:
+  items:
+    - title: Kagurachu·s BLOG
+      url: https://www.lolicon.cyou/
+      avatar: https://s1.328888.xyz/2022/08/08/0ogL0.jpg
+      description: （我也不知道写点啥
+- group: 工具
+  description:
+  items:
+    - title: Hexo
+      url: https://hexo.io/zh-tw/
+      avatar: https://d33wubrfki0l68.cloudfront.net/6657ba50e702d84afb32fe846bed54fba1a77add/827ae/logo.svg
+      description: 快速、简单且强大的网誌框架
