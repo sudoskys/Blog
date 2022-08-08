@@ -2,9 +2,9 @@
 title: JSUOP在Androlua中的初级应用
 date: 2021-7-25 11:09:37
 tags: Android
-copyright_info: 原创编写|材料采集与引用已注明
-copyright_author: LuoYing
+cover: false
 ---
+
 ## Jsoup概述
 
 jsoup是java里的一个普遍使用的html解析器，其的逻辑简单，语法容易，且功能强大
