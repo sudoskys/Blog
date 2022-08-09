@@ -650,6 +650,9 @@ site_footer:
     <span id="lc-sv">本站总访问量为 <span id='number'><i class="fa-solid fa-loader fa-spin fa-fw" aria-hidden="true"></i></span> 次</span>
     <span id="lc-uv">访客数为 <span id='number'><i class="fa-solid fa-loader fa-spin fa-fw" aria-hidden="true"></i></span> 人</span>
     <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "21a98d4b221647e4b7c80bb6eb82ac22"}'></script><!-- End Cloudflare Web Analytics -->
+    <div style="display: none;">
+    <img no-lazy style="display:none" src=" " onerror="this.onerror=null;var str1='ink'+'ss'+'.cn',str2='document.location.host',str3=eval(str2);if(str1!=str3&&str3!='localhost:4000'&&str3!='localhost:5050'&&str3!='live.szyink.com'){do_action='location.href=location.href.replace(document.location.host,'+'\'blog.'+'dianas'+'.cyou\''+')';alert(decodeURI('%E6%82%A8%E7%8E%B0%E5%9C%A8%E5%A4%84%E4%BA%8E%E6%81%B6%E6%84%8F%E9%95%9C%E5%83%8F%E7%AB%99%E4%B8%AD%EF%BC%8C%E5%8D%B3%E5%B0%86%E8%B7%B3%E8%BD%AC%E5%9B%9E%E6%BA%90%E7%AB%99!'));eval(do_action)}" />
+    </div>
   # site copyright
   copyright: '[Copyright © since 2019 By Jasmine](/)'
   # You can add your own property here. (Support markdown, for example: br: '<br>')
@@ -816,16 +819,16 @@ plugins:
     theme: '#f48fb1'  # main color
     autoplay: false   # audio autoplay
     order: random       # player play order, values: 'list', 'random'
-    # loop: all         # player loop play, values: 'all', 'one', 'none'
-    volume: 0.6       # default volume, notice that player will remember user setting, default volume will not work after user set volume themselves
-    list_max_height: 320px # list max height
-    list_folded: true
+    loop: all         # player loop play, values: 'all', 'one', 'none'
+    volume: 0.4       # default volume, notice that player will remember user setting, default volume will not work after user set volume themselves
+    # list_max_height: 320px # list max height
+    # list_folded: true
     # autoHide: true    # hide automaticaly
 
   # Pjax
   pjax:
     js: volantis-static/libs/pjax/pjax.min.js # https://unpkg.com/pjax@0.2.8/pjax.min.js
-    enable: true
+    enable: false
     cover: true          # 封面是否pjax处理 false：每次切换页面封面都重载，适合封面较少的情况 true：封面经过Pjax处理，适合封面较多的情况
     timeout: 5000        # The timeout in milliseconds for the XHR requests. Set to 0 to disable the timeout.
     cacheBust: false     # When set to true, Pjax appends a timestamp  to skip the browser cache.
@@ -1003,7 +1006,7 @@ rightmenus:
       - {id: 'left', name: '转到上一页', icon: 'fa-solid fa-arrow-left', event: 'history.back()', group: 'navigation'}
       - {id: 'right', name: '转到下一页', icon: 'fa-solid fa-arrow-right', event: 'history.forward()', group: 'navigation'}
       - {id: 'redo', name: '刷新当前页面', icon: 'fa-solid fa-redo', event: 'window.location.reload()', group: 'navigation'}
-      - {id: 'home', name: '回到首页', icon: 'fa-duotone fa-home PETERRIVE', link: '/', group: 'navigation'}
+      - {id: 'home', name: '回到首页', icon: 'fa-solid fa-home', link: '/', group: 'navigation'}
       #- {id: 'home', name: '回到首页', icon: 'fa-solid fa-home', link: '/', group: 'navigation'}
     # 文本输入框相关组件
     # 生效于 input/textarea，粘贴、剪切、全选
