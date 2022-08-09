@@ -508,7 +508,7 @@ sidebar:
         - icon: fab fa-github
           url: https://github.com/sudoskys/
         - icon: fa-solid fa-headphones-alt
-          url: /music
+          url: https://musicforprogramming.net/latest/
     # ---------------------------------------
     # toc widget (valid only in articles)
     toc:
@@ -834,7 +834,7 @@ plugins:
   #   icon: fa-solid fa-moon # 可自定义
   #   toggle: darkmode
   darkmode:
-    enable: #true
+    enable: true
 
   # 旧版 Internet Explorer 淘汰行动
   # https://www.microsoft.com/zh-cn/WindowsForBusiness/End-of-IE-support
@@ -949,7 +949,7 @@ plugins:
 
 ### 自定义右键 新
 rightmenus:
-  enable: false
+  enable: true
   # 右键菜单项及加载顺序
   # 内容示例：plugins.[组名], menus.[组名], hr(分割线，推荐去线留白), music(音乐控制器)
   order:
@@ -1029,12 +1029,12 @@ rightmenus:
   # 右键自定义菜单区域
   menus:
     link:
-      - {id: 'help', name: '常见问题', icon: 'fa-solid fa-question', link: 'https://volantis.js.org/faqs/', group: 'link'}
-      - {id: 'examples', name: '示例博客', icon: 'fa-solid fa-rss', link: 'https://volantis.js.org/examples/', group: 'link'}
-      - {id: 'contributors', name: '加入社区', icon: 'fa-solid fa-fan', link: 'https://volantis.js.org/contributors/', group: 'link'}
-      - hr
-      - {id: 'source_docs', name: '本站源码', icon: 'fa-solid fa-code-branch', link: 'https://github.com/volantis-x/volantis-docs/', group: 'link'}
-      - {id: 'source_theme', name: '主题源码', icon: 'fa-solid fa-code-branch', link: 'https://github.com/volantis-x/hexo-theme-volantis/', group: 'link'}
+      - {id: 'note', name: '即时笔记', icon: 'fa fa-paint-brush', link: 'https://www.notion.so/', group: 'link'}
+      - {id: 'test', name: '即时测试', icon: 'fas fa-magic', link: 'https://colab.research.google.com/', group: 'link'}
+      - {id: 'sponsor', name: '无障碍赞助', icon: 'fa fa-coffee', link: 'https://dun.mianbaoduo.com/@Sky0717', group: 'link'}
+      # - hr
+      - {id: 'rss', name: '订阅博客', icon: 'fa-solid fa-rss', link: 'https://blog.dianas.cyou/atom.xml', group: 'link'}
+      #- {id: 'source_theme', name: '主题源码', icon: 'fa-solid fa-code-branch', link: 'https://github.com/volantis-x/hexo-theme-volantis/', group: 'link'}
     darkMode:
       - {id: 'darkMode', name: '暗黑模式', icon: 'fa-solid fa-moon', event: 'volantis.dark.toggle()', group: 'darkMode'}
 ###
@@ -1062,26 +1062,22 @@ rightmenu:
   music:           # 当设定全局音乐播放器时，是否一直显示音乐控制菜单。false：仅当音乐播放时启用
     alwaysShow: true
   ### 自定义菜单 ###
-  help:
-    name: 常见问题
-    icon: fa fa-question
-    url: https://volantis.js.org/faqs/
-  examples:
-    name: 示例博客
+  note:
+    name: 即时笔记
+    icon: fa fa-paint-brush
+    url: https://www.notion.so/
+  rss:
+    name: 订阅博客
     icon: fa fa-rss
-    url: https://volantis.js.org/examples/
-  contributors:
-    name: 加入社区
-    icon: fa fa-fan fa-spin
-    url: https://volantis.js.org/contributors/
-  source_docs:
-    name: 本站源码
-    icon: fa fa-code-branch
-    url: https://github.com/volantis-x/volantis-docs/
-  source_theme:
-    name: 主题源码
-    icon: fa fa-code-branch
-    url: https://github.com/volantis-x/hexo-theme-volantis/
+    url: https://blog.dianas.cyou/atom.xml
+  sponsor:
+    name: 无障碍赞助
+    icon: fa fa-coffee
+    url: https://dun.mianbaoduo.com/@Sky0717
+  test:
+    name: 即时测试
+    icon: fa fa-magic
+    url: https://colab.research.google.com/
 ############################### Rightmenu ############################### > end
 
 
@@ -1142,7 +1138,7 @@ color_scheme:
     h4: '#444'
     h5: '#444'
     h6: '#444'
-    p: '#444'
+    p:   '#444'
 
     # 列表文字
     list: '#666'
@@ -1154,7 +1150,7 @@ color_scheme:
   # 暗色主题
   dark:
     # 网站背景色
-    site_bg: '#222'
+    site_bg: '#636267'
     # 网站背景上的文字
     site_inner: '#eee'
     # 网站页脚文字
@@ -1167,12 +1163,12 @@ color_scheme:
     # 区块和代码块背景色
     block: '#3a3a3a'
     # 代码块高亮时的背景色
-    codeblock: '#343a3c'
+    codeblock: '#636267'
     # 行内代码颜色
-    inlinecode: '#D56D28'
+    inlinecode: '#EFEBE9'
 
     # 文章部分
-    h1: '#eee'
+    h1: '#EE9CB3'
     h2: '#eee'
     h3: '#ddd'
     h4: '#ddd'
@@ -1183,7 +1179,7 @@ color_scheme:
     # 列表文字
     list: '#aaa'
     # 列表 hover 时的文字
-    list_hl: 'mix($color-theme, #fff, 80)'
+    list_hl: 'mix($color-theme, #F5ECE7, 80)'
     # 辅助性文字
     meta: '#888'
     # 夜间图片亮度
