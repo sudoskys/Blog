@@ -806,6 +806,7 @@ plugins:
 
   aplayer:
     enable: true
+    pjax: true
     js:
       aplayer: volantis-static/libs/aplayer/dist/APlayer.min.js # https://unpkg.com/aplayer@1.10/dist/APlayer.min.js
       meting: volantis-static/libs/meting/dist/Meting.min.js # https://unpkg.com/meting@2.0/dist/Meting.min.js
@@ -828,7 +829,7 @@ plugins:
   # Pjax
   pjax:
     js: volantis-static/libs/pjax/pjax.min.js # https://unpkg.com/pjax@0.2.8/pjax.min.js
-    enable: false
+    enable: true
     cover: true          # 封面是否pjax处理 false：每次切换页面封面都重载，适合封面较少的情况 true：封面经过Pjax处理，适合封面较多的情况
     timeout: 5000        # The timeout in milliseconds for the XHR requests. Set to 0 to disable the timeout.
     cacheBust: false     # When set to true, Pjax appends a timestamp  to skip the browser cache.
