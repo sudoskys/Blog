@@ -1,8 +1,7 @@
 ---
 title: 笔记本验机指南
 date: 2022-08-03 10:25:53
-layout:
-  tags: 
+tags: 
      - 指南
      - 总结
 headimg: https://tva2.sinaimg.cn/large/9bd9b167gy1g4ligc2xvnj21hc0xchdt.jpg

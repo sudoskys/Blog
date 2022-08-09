@@ -4,6 +4,7 @@ date: 2021-3-13 08:28:10
 tags: Ubuntu
 copyright_info: 原创编写|材料采集与引用已注明
 copyright_author: LuoYing
+cover: false
 ---
 > win10 子系统最大的方便之处在于能访问win10的文件系统和目录，其次能够实现win10的cpu 和内存的动态调度这个比虚拟机处理快很多了。
 >

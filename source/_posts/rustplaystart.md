@@ -4,8 +4,7 @@ date: 2021-8-22 06:22:37
 tags:
    - Rust
    - 配置
-copyright_info: 原创编写|材料采集与引用已注明
-copyright_author: LuoYing
+cover: false
 ---
 
 ## 安装准备

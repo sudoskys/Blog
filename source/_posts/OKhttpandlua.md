@@ -1,7 +1,10 @@
 ---
-title: OKhttpandlua
+title: OKhttp&Andlua应用探索
 date: 2021-10-29 23:45:55
-tags:
+tags: 
+   - Android
+   - Okhttp
+cover: false
 ---
 # OKhttp在Androlua中的初级应用
 

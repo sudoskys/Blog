@@ -2,6 +2,7 @@
 title: 安卓的三级缓存
 date: 2021-10-30 03:16:53
 tags: Android
+cover: false
 ---
 
 ## 为什么使用三级缓存？

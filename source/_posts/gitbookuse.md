@@ -1,9 +1,12 @@
 ---
-title: GITBOOK配置教程
+title: Gitbook 配置不完全指北
 date: 2021-5-12 07:01:27
-tags: Web
+tags: 
+   - Web
+   - 指南
 copyright_info: 原创编写|材料采集与引用已注明
 copyright_author: LuoYing
+cover: false
 ---
 ## 配置环境
 

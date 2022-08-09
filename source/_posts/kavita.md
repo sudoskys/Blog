@@ -2,7 +2,7 @@
 title: Kavita搭建记录
 date: 2022-1-11 11:12:29
 tags: Web Build
-cover: https://tva2.sinaimg.cn/large/9bd9b167gy1g4ligc2xvnj21hc0xchdt.jpg
+headimg: https://tva2.sinaimg.cn/large/9bd9b167gy1g4ligc2xvnj21hc0xchdt.jpg
 ---
 ![Kavita](https://socialify.git.ci/Kareadita/Kavita/image?font=Bitter&language=1&name=1&owner=1&pattern=Overlapping%20Hexagons&stargazers=1&theme=Dark)
 
