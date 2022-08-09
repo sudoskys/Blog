@@ -99,7 +99,7 @@ navbar:
       icon: fa-solid fa-link
       url: friends/
     - name: 关于
-      icon: fa-solid fa-info-circle
+      icon: fa-solid fa-heart
       url: about/
   search: Search...   # Search bar placeholder
 ############################### Navigation Bar ############################### > end
