@@ -1,80 +1,4 @@
-############################### Volantis ###############################
-info:
-  theme_name: Volantis # This is theme's name.
-  theme_docs: https://volantis.js.org/ # This is theme's URL.
-  theme_repo: https://github.com/volantis-x/hexo-theme-volantis
-# Debug 调试模式
-debug: false
-############################### 默认占位图 ###############################
-default:
-  avatar: https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/avatar/round/3442075.svg
-  link: volantis-static/media/placeholder/link/8f277b4ee0ecd.svg # https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/link/8f277b4ee0ecd.svg
-  cover: https://s1.328888.xyz/2022/08/08/0cXIg.jpg
-  image: volantis-static/media/placeholder/image/2659360.svg # https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg
-############################### CSP ###############################
-# 内容安全策略( CSP ) meta 标签 http-equiv="Content-Security-Policy"
-# https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CSP
-# https://content-security-policy.com/
-# 也可以设为 false 在 HTTP 标头中设置 https://volantis.js.org/v5/advanced-settings/#设置-HTTP-响应标头
-csp:
-  enable: true
-  content: "
-    default-src 'self' https:;
-    block-all-mixed-content;
-    base-uri 'self' https:;
-    form-action 'self' https:;
-    worker-src 'self' https:;
-    connect-src 'self' https: *;
-    img-src 'self' data: https: *;
-    media-src 'self' https: *;
-    font-src 'self' data: https: *;
-    frame-src 'self' https: *;
-    manifest-src 'self' https: *;
-    child-src https:;
-    script-src 'self' https: 'unsafe-inline' *;
-    style-src 'self' https: 'unsafe-inline' *;
-  "
-  # 可以使用自动程序替换默认的 'unsafe-inline' 和 * 生成更严格的内容安全策略.
-  # 另可以参考官网的 gulp 方案.
-  # gulpfile.js https://github.com/volantis-x/community/blob/main/gulpfile.js
-############################### CDN ###############################
-# 本地静态文件使用 CDN 加速
-# 默认使用 https://unpkg.com/hexo-theme-volantis@<%- theme.info.theme_version %>/source/js/*.js ，注意版本号对应关系！！可以通过修改以下配置项覆盖
-# 开发者注意 cdn.enable 设置为 false
-cdn:
-  enable: false
-  # CDN 前缀，为空使用默认值，链接最后不加 "/",
-  # 例如： https://cdn.jsdelivr.net/gh/volantis-x/volantis-x.github.io@gh-page 填写最后编译生成的源码CDN地址前缀，此路径下应该含有/js与/css目录,
-  # 该配置默认值是："https://unpkg.com/hexo-theme-volantis@"+ theme.info.theme_version +"/source"
-  prefix: #https://unpkg.com/hexo-theme-volantis/source
-  # 以下配置可以覆盖 cdn.prefix,配置项的值可以为空，但是要使用CDN必须依据路径填写配置项的键
-  set:
-    js:
-      app: /js/app.js
-    css:
-      style: /css/style.css # (异步加载样式)
-# 静态资源版本控制
-# 本地文件使用文件内容的hash值作为版本号(app.8c1e7c88.js)  其他为时间戳 (?time=1648684470140)
-# 建议静态资源设置标头 浏览器缓存一年边缘缓存一个月 cache-control: max-age=86400, s-maxage=31536000 如果有更新记得刷新缓存
-cdn_version: true
-# volantis static 静态资源文件 npm 包 CDN 地址 (后面加 "/" )
-# https://github.com/volantis-x/volantis-static
-volantis_static_cdn: https://unpkg.com/volantis-static@0.0.1654736714924/
-########################################################################
-# 全局页面字符串替换  A => B (可用于临时修改错字等)
-replace:
-  - https://cdn.jsdelivr.net/npm/ => https://unpkg.com/
-  - https://cdn.jsdelivr.net/gh/ => https://gcore.jsdelivr.net/gh/
-
-
-# dns-prefetch preconnect x-dns-prefetch-control
-dns_prefetch:
-  - https://unpkg.com
-
-
-# 平滑滚动效果
-scroll_smooth: true
-############################### Navigation Bar ############################### > start
+use_cdn: false
 # 注意事项：建议规范全站路径 URL 最后带一个 "/" 例如 "about/"
 navbar:
   visiable: auto # always, auto
@@ -142,10 +66,6 @@ cover:
       url: https://colafun.notion.site/9d169f9cf41e45f6a9edf17d02a0d3e0
 ############################### Cover ############################### > end
 
-pages:
-  # 友链页面配置
-  friends:
-    layout_scheme: traditional # simple: 简单布局, traditional: 传统布局
 
 ############################### Article Layout ############################### > start
 # 文章布局
@@ -154,7 +74,7 @@ article:
   preview:
     scheme: landscape # landscape
     # pin icon for post
-    pin_icon: volantis-static/media/twemoji/assets/svg/1f4cc.svg # https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f4cc.svg
+    # pin_icon: volantis-static/media/twemoji/assets/svg/1f4cc.svg # https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f4cc.svg
     # auto generate title if not exist
     auto_title: true # false, true
     # auto generate excerpt if not exist
@@ -162,7 +82,7 @@ article:
     # hide excerpt
     hide_excerpt: false
     # show split line or not
-    line_style: solid # hidden, solid, dashed, dotted
+    # line_style: solid # hidden, solid, dashed, dotted
     # show author
     author: false # true, false
     # show readmore button
@@ -307,63 +227,6 @@ comments:
   title: <i class='fa-solid fa-comments'></i> 评论
   subtitle:
   service: utterances
-  # 可选评论系统 #
-
-  # artalk
-  # https://artalk.js.org/
-  # https://github.com/ArtalkJS/Artalk
-  artalk:
-    js: https://yours-artalk-domain/dist/Artalk.js   # or https://unpkg.com/artalk@2.2.8/dist/Artalk.js
-    css: https://yours-artalk-domain/dist/Artalk.css # or https://unpkg.com/artalk@2.2.8/dist/Artalk.css
-    server: https://yours-artalk-domain    # 修改为自建的后端服务地址
-    path:  # 全局评论地址
-    placeholder: # 评论占位
-    # artalk 有三类图片：1.上传至服务端 2.上传至服务端后利用upgit上传至图床 3.前端上传至图床（本配置为此类）
-    # 配置此项时将覆盖服务端上传能力
-    imageUploader:
-      # 以兰空图床为例，下列填写内容为：
-      # url: 'https://xxxxxx/api/v1/upload'
-      # token: 'Bearer xxxxxxxxxxxxxx'
-      # resp: 'data.links.url'
-      api: # 图床地址
-      token: # 图床验证
-      resp: # 图片地址返回值的字段
-    # 更多置项可在 Artalk 后端进行配置，详见 https://artalk.js.org/guide/backend/fe-control.html
-    # 也可以在此处继续参考上方例子进行配置，不建议重写配置的字段除上方所述外还有：
-    # [el, useBackendConf, pageKey, pageTitle, site, darkMode, pvEl, imgUploader]
-
-  # giscus
-  # https://giscus.app
-  # https://github.com/laymonage/giscus
-  giscus:
-    # 以下配置按照 yml 格式增删填写即可
-    # repo: xxx/xxx
-    # repo-id: xxx
-    # category: xxx
-    # category-id: xxx
-    # mapping: "pathname"
-    # reactions-enabled: "1"
-    # emit-metadata: "0"
-    # lang: "zh-CN"
-    # 以上配置按照 yml 格式增删填写即可
-    theme:
-      light: "light" # https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@master/css/giscus/light.css
-      dark: "dark" # https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@master/css/giscus/dark.css
-
-  # beaudar
-  # https://beaudar.lipk.org/
-  beaudar:
-    repo: xxx/xxx
-    issue-term: pathname
-    issue-number:
-    branch: main
-    position: top
-    order: desc
-    theme:
-      light: github-light
-      dark: github-dark
-    label: ✨💬✨
-
   # utterances
   # https://utteranc.es/
   utterances:
@@ -375,112 +238,12 @@ comments:
       dark: github-dark
     label: ✨💬✨
 
-
-  # Theme: github-light/github-dark/github-dark-orange/icy-dark/dark-blue/photon-dark
-  # Disqus
-  # https://disqus.com
-  disqus:
-    shortname:
-    # optional
-    autoload: false
-    path: # 全局评论地址
-
-  # DisqusJS
-  # https://github.com/SukkaW/DisqusJS
-  disqusjs:
-    path: # 全局评论地址
-    js: https://unpkg.com/disqusjs@1.3/dist/disqus.js
-    css: https://unpkg.com/disqusjs@1.3/dist/disqusjs.css
-    # 配置项按照yml格式继续填写即可 除了 [siteName url identifier] 选项
-    #shortname:
-    #api:
-    #apikey:
-    #admin:
-    #nesting:
-
-  # Gitalk
-  # https://gitalk.github.io/
-  gitalk:
-    js: https://unpkg.com/gitalk@1/dist/gitalk.min.js
-    # 配置项按照yml格式继续填写即可 除了 [id distractionFreeMode] 选项
-    clientID:
-    clientSecret:
-    repo:
-    owner:
-    admin: # []
-    path: # 全局评论地址
-
-  # Vssue 暂不支持Pjax
-  # https://vssue.js.org/zh/
-  vssue:
-    js: https://cdn.jsdelivr.net/gh/meteorlxy/vssue@1.4.4/packages/vssue/dist/vssue.github.min.js
-    css: https://cdn.jsdelivr.net/gh/meteorlxy/vssue@1.4.4/packages/vssue/dist/vssue.min.css
-    vue: https://cdn.jsdelivr.net/gh/vuejs/vue@2.6.11/dist/vue.runtime.min.js
-    owner:
-    repo:
-    clientId:
-    clientSecret:
-
-  # LiveRe 暂不支持Pjax
-  # https://www.livere.com
-  livere:
-    uid:
-
-  # Isso
-  # https://posativ.org/isso/
-  isso:
-    url: https://example.com/(path/)
-    src: https://example.com/(path/)js/embed.min.js
-    css:
-    gravatar:
-
-  # HashOver 暂不支持Pjax
-  # https://www.barkdull.org/software/hashover
-  hashover:
-    src: https://example.com/(path/)comments.php
-
-  # Twikoo
-  # https://twikoo.js.org/
-  twikoo:
-    js: https://unpkg.com/twikoo@latest # 建议锁定版本
-    path: # 全局评论地址
-    # 其他配置项按照yml格式继续填写即可 除了 [el path] 选项
-    envId: xxxxxxxxxxxxxxx # 腾讯云环境id
-    placeholder: #全局评论占位，也可以在管理面板中的配置管理处设置（此处优先级更高）
-
-  # Waline
-  # https://waline.js.org/
-  waline:
-    js: https://unpkg.com/@waline/client@v2/dist/waline.js
-    css: https://unpkg.com/@waline/client@v2/dist/waline.css
-    path: # 全局评论地址 目前设置全局评论地址后visitor失效,这是waline的问题
-    placeholder: # 评论占位提示
-    serverURL: # Waline 的服务端地址（必填） 测试用地址: https://waline.vercel.app
-    imageUploader:
-      # 以兰空图床为例，下列填写内容为：
-      # url: https://xxxxxx/api/v1/upload
-      # token: Bearer xxxxxxxxxxxxxx
-      # resp: data.links.url
-      api:   # 图床地址
-      token: # 图床验证
-      resp:  # 图片地址返回值的字段
-    pageview: true # 浏览量统计
-    comment: true  # 评论数统计
-    # 其他配置项按照yml格式继续填写即可 除了 [el path imageUploader] 选项
-    # 组件属性地址：https://waline.js.org/reference/component.html
-    # meta: ['nick', 'mail', 'link']
-
-  # Discuss
-  # https://discuss.js.org
-  discuss:
-    js: https://cdn.jsdelivr.net/npm/discuss/dist/Discuss.js # 建议锁定版本
-    serverURLs: # Discuss server address url
-    # https://discuss.js.org/Quick-Start.html#path
-
-
 ############################### Comments ############################### > end
 
+
+
 ############################### Sidebar ############################### > start
+
 sidebar:
   position: left # left right
   # 主页、分类、归档等独立页面
@@ -494,7 +257,7 @@ sidebar:
     blogger:
       class: blogger
       display: [desktop, mobile] # [desktop, mobile]
-      avatar: https://s1.328888.xyz/2022/08/08/0cYHh.jpg # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png
+      avatar: https://blog.dianas.cyou/img/favicon.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png
       shape: circle # circle, rectangle
       url: /about/
       title:
@@ -608,23 +371,6 @@ sidebar:
 ############################### Sidebar ############################### > end
 
 
-############################### Tag Plugins ############################### > start
-# 内置标签插件的配置
-tag_plugins:
-  # {% note text %}
-  note: # style for default note:
-    icon: '\f054'
-    color: ''
-    iconfont: 'Font Awesome 6 Free'
-  # {% checkbox %}
-  checkbox:
-    interactive: false # enable interactive for user
-    color: '' # color for default checkbox
-  # {% link title, url, img %}
-  link:
-    placeholder:  volantis-static/media/org.volantis/logo/256/safari.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/256/safari.png
-############################### Tag Plugins ############################### > end
-
 
 ############################### Site Footer ############################### > start
 site_footer:
@@ -638,11 +384,11 @@ site_footer:
     - icon: fab fa-github
       url: https://github.com/sudoskys
     # or
-    - img:
-      url:
-    # or
-    - avatar:
-      url:
+    #- img:
+      #url:
+    ## or
+    #- avatar:
+      #url:
   # site source
   source: https://github.com/volantis-x/volantis-docs/
   # analytics using leancloud
@@ -693,6 +439,7 @@ plugins:
   contributorsjs:
     enable: true
 
+
   ######## Plugins to improve loading speed:
   # 预加载
   preload:
@@ -713,7 +460,7 @@ plugins:
     loadingImg: # https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg # 不建议使用占位图, 建议loadingImg为空, 当前占位图会产生布局偏移, loadingImg 为空占位图是一个 1X1 像素的图片
     blurIn: true # 模糊加载效果 （loadingImg为空时有效）
 
-  ######## Plugins to optimize the experience:
+ ######## Plugins to optimize the experience:
   # 代码高亮
   code_highlight: highlightjs # highlightjs or prismjs
   # highlight.js
@@ -773,7 +520,7 @@ plugins:
 
   # 视差滚动效果 Slide Background
   parallax:
-    enable: false
+    enable: #true
     position: cover       # cover: sticky on the cover.   fixed: Fixed as background for the site.
     shuffle: true         # shuffle playlist
     duration: 10000       # Duration (ms)
@@ -801,12 +548,11 @@ plugins:
       - volantis-static/media/wallpaper/minimalist/2020/054.webp
       - volantis-static/media/wallpaper/minimalist/2020/056.webp
 
+
   # APlayer is only available in mainland China.
   # APlayer config: https://github.com/metowolf/MetingJS
-
   aplayer:
     enable: true
-    pjax: true
     js:
       aplayer: volantis-static/libs/aplayer/dist/APlayer.min.js # https://unpkg.com/aplayer@1.10/dist/APlayer.min.js
       meting: volantis-static/libs/meting/dist/Meting.min.js # https://unpkg.com/meting@2.0/dist/Meting.min.js
@@ -815,16 +561,10 @@ plugins:
     server: netease   # netease, tencent, kugou, xiami, baidu
     type: album    # song, playlist, album, search, artist
     id: 83679409    # song id / playlist id / album id / search keyword
-    # Optional
-    # fixed: false      # enable fixed mode
-    theme: '#f48fb1'  # main color
     autoplay: false   # audio autoplay
-    order: random       # player play order, values: 'list', 'random'
+    # order: random       # player play order, values: 'list', 'random'
     loop: all         # player loop play, values: 'all', 'one', 'none'
-    volume: 0.4       # default volume, notice that player will remember user setting, default volume will not work after user set volume themselves
-    # list_max_height: 320px # list max height
-    # list_folded: true
-    # autoHide: true    # hide automaticaly
+    volume: 0.4       # default volume, notice that player will remember user setting,
 
   # Pjax
   pjax:
@@ -934,25 +674,6 @@ plugins:
       enable: true                        # 是否开启右键模块的消息通知
       notice: true                        # 唤醒原右键菜单的通知
 
-  # 聊天功能
-  chat_service: # tidio or gitter
-
-  # Tidio
-  # https://www.tidio.com/
-  tidio:
-    id: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-
-  # Gitter
-  # https://gitter.im
-  gitter:
-    room: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-
-  # swiper
-  # https://www.swiper.com.cn/
-  swiper:
-    enable: true
-    css: volantis-static/libs/swiper/swiper-bundle.min.css # https://unpkg.com/swiper@6/swiper-bundle.min.css
-    js: volantis-static/libs/swiper/swiper-bundle.min.js # https://unpkg.com/swiper@6/swiper-bundle.min.js
 
 ############################### Plugins ############################### > end
 
@@ -1050,45 +771,6 @@ rightmenus:
       - {id: 'darkMode', name: '暗黑模式', icon: 'fa-solid fa-moon', event: 'volantis.dark.toggle()', group: 'darkMode'}
 ###
 
-# 自定义右键菜单
-rightmenu:
-  enable: false
-  faicon: fa              # 公共图标类型 fa fal fa-solid fa-duotone
-  # hr: 分割线, music: 音乐控制器
-  layout: [home, hr, help, examples, contributors, hr, source_docs, source_theme, hr, print, darkmode, reading, music]
-  ### 可选功能项 ###
-  print:                  # 只有文章页才允许自定义打印
-    name: 打印页面
-    icon: fa fa-print
-  darkmode:        # 需开启 plugins.darkmodejs
-    name: 暗黑模式
-    icon: fa fa-moon
-  reading:
-    name: 阅读模式
-    icon: fa fa-book-open
-  customPicUrl:    # 右键的图片复制：只有 Chrome 支持，且只支持 PNG 格式的图片。
-    enable: false  # 如果使用了对象存储且开启了自适应 Webp，那么可以提供额外的链接用以替换图片的访问地址
-    old: #https://static.inkss.cn/img/article/
-    new: #https://cdn.jsdelivr.net/gh/inkss/inkss-cdn@master/img/article/
-  music:           # 当设定全局音乐播放器时，是否一直显示音乐控制菜单。false：仅当音乐播放时启用
-    alwaysShow: true
-  ### 自定义菜单 ###
-  note:
-    name: 即时笔记
-    icon: fa fa-paint-brush
-    url: https://www.notion.so/
-  rss:
-    name: 订阅博客
-    icon: fa fa-rss
-    url: https://blog.dianas.cyou/atom.xml
-  sponsor:
-    name: 无障碍赞助
-    icon: fa fa-coffee
-    url: https://dun.mianbaoduo.com/@Sky0717
-  test:
-    name: 即时测试
-    icon: fa fa-magic
-    url: https://colab.research.google.com/
 ############################### Rightmenu ############################### > end
 
 
@@ -1197,10 +879,11 @@ color_scheme:
     brightness: 70%
 ############################### Color Scheme ############################### > end
 
+
 ############################### Custom css ############################### > start
 custom_css:
   cursor:
-    enable: #true
+    enable: true
     text: volantis-static/media/cursor/text.png # https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/text.png
     pointer: volantis-static/media/cursor/pointer.png # https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/pointer.png
     default: volantis-static/media/cursor/left_ptr.png # https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/left_ptr.png
@@ -1273,59 +956,3 @@ custom_css:
       # weight: normal
       # style: normal
 ############################### Custom css ############################### > end
-
-
-############################### Analytics ############################### > start
-analytics:
-  busuanzi: #volantis-static/libs/busuanzi/js/busuanzi.pure.mini.js #https://cdn.jsdelivr.net/gh/volantis-x/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js
-  leancloud: # 请使用自己的 id & key 以防止数据丢失
-    app_id: # u9j57bwJod4EDmXWdxrwuqQT-MdYXbMMI
-    app_key: # jfHtEKVE24j0IVCGHbvuFClp
-    custom_api_server: # 国际版一般不需要写，除非自定义了 API Server
-############################### Analytics ############################### > end
-
-############################### SEO ############################### > start
-seo:
-  # When there are no keywords in the article's front-matter, use tags as keywords.
-  use_tags_as_keywords: true
-  # When there is no description in the article's front-matter, use excerpt as the description.
-  use_excerpt_as_description: true
-  robots:
-    home_first_page: index,follow
-    home_other_pages: noindex,follow
-    archive: noindex,follow
-    category: noindex,follow
-    tag: noindex,follow
-    # robots can be written in front-matter
-############################### SEO ############################### > end
-
-############################### Open Graph ############################### > start
-# https://ogp.me/
-# https://hexo.io/zh-cn/docs/helpers#open-graph
-open_graph:
-  image: volantis-static/media/org.volantis/blog/favicon/android-chrome-192x192.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png
-  twitter_card: summary # summary_large_image , summary
-  #twitter_id:
-  #twitter_site:
-############################### Open Graph ############################### > end
-
-############################### Structured Data ############################### > start
-# SEO 入门文档: https://developers.google.com/search/docs
-# https://schema.org.cn/
-# 结构化数据用于更改搜索结果的显示效果
-# 目前内置的结构化数据: blogposting, breadcrumblist, organization, person, website
-# 目前内置的富媒体搜索结果: 路径(面包屑导航), 徽标(Logo), 站点链接搜索框(SearchAction)
-# https://developers.google.com/search/docs/advanced/structured-data/intro-structured-data
-# 富媒体搜索结果测试: https://search.google.com/test/rich-results
-structured_data:
-  enable: true
-  # 以下是覆盖配置, 默认配置见 scripts/helpers/structured-data/lib/config.js
-  data:
-    person:
-      sns:
-        - https://github.com/volantis-x
-    logo:
-      path: # volantis-static/media/org.volantis/blog/favicon/android-chrome-192x192.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png
-      width: 192
-      height: 192
-############################### Structured Data ############################### > end

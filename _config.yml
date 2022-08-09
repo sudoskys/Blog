@@ -1,8 +1,6 @@
 # Hexo Configuration
 ## Docs: https://hexo.io/docs/configuration.html
 ## Source: https://github.com/hexojs/hexo/
-## https://volantis.js.org/v5/site-settings/
-
 
 # Site
 title: Jasmine
@@ -13,9 +11,8 @@ keywords:
 author: Alice
 language: zh-CN
 timezone: 'Asia/Shanghai'
-# URL
-## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://blogs.dianas.cyou
+
+url: http://blog.dianas.cyou
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:

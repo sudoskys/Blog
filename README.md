@@ -1,4 +1,4 @@
-# My blog
+# demo blog
 
 Open terminal and run:
 
