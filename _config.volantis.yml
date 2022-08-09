@@ -484,7 +484,7 @@ comments:
 sidebar:
   position: left # left right
   # 主页、分类、归档等独立页面
-  for_page: [blogger, category, tagcloud, donate, webinfo]
+  for_page: [blogger, category, tagcloud, webinfo]
   # layout: docs/post 这类文章页面
   for_post: [toc]
   # 侧边栏组件库
@@ -526,7 +526,7 @@ sidebar:
     music:
       class: music
       display: [desktop, mobile] # [desktop, mobile]
-      pjaxReload: false
+      pjaxReload: true
     # ---------------------------------------
     # category widget
     category:
@@ -551,14 +551,16 @@ sidebar:
       start_color: '#999'
       end_color: '#555'
     # ---------------------------------------
-    # qrcode widget
-    qrcode:
-      class: qrcode
+    lists:
+      class: list
       display: [desktop, mobile] # [desktop, mobile]
-      height: 64px  # Automatic height if not set
-      images:
-        - volantis-static/media/org.volantis/blog/qrcode/github@volantis.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png
-        - volantis-static/media/org.volantis/blog/qrcode/github@volantis.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png
+      header:
+         icon: fas fa-coffee
+         title: BuyMeCoffee
+         #url: /wiki/
+      rows:
+         - name: Mianbaoduo
+           url: https://dun.mianbaoduo.com/@Sky0717
     # ---------------------------------------
     # webinfo widget
     webinfo:
@@ -629,8 +631,12 @@ site_footer:
   # layout of footer: [aplayer, social, license, info, copyright]
   layout: [aplayer, social, license, analytics, info, copyright]
   social:
-    - icon: #fa-solid fa-rss
-      url:
+    - icon: fa fa-coffee
+      url: https://dun.mianbaoduo.com/@Sky0717
+    - icon: fas fa-envelope
+      url: mailto:me@dianas.cyou
+    - icon: fab fa-github
+      url: https://github.com/sudoskys
     # or
     - img:
       url:
@@ -794,6 +800,7 @@ plugins:
 
   # APlayer is only available in mainland China.
   # APlayer config: https://github.com/metowolf/MetingJS
+
   aplayer:
     enable: true
     js:
@@ -802,7 +809,7 @@ plugins:
     css: volantis-static/libs/aplayer/dist/APlayer.min.css # https://unpkg.com/aplayer@1.10/dist/APlayer.min.css
     # Required
     server: netease   # netease, tencent, kugou, xiami, baidu
-    type: playlist    # song, playlist, album, search, artist
+    type: album    # song, playlist, album, search, artist
     id: 83679409    # song id / playlist id / album id / search keyword
     # Optional
     # fixed: false      # enable fixed mode
@@ -811,8 +818,8 @@ plugins:
     order: random       # player play order, values: 'list', 'random'
     # loop: all         # player loop play, values: 'all', 'one', 'none'
     volume: 0.6       # default volume, notice that player will remember user setting, default volume will not work after user set volume themselves
-    # list_max_height: 320px # list max height
-    # list_folded: true
+    list_max_height: 320px # list max height
+    list_folded: true
     # autoHide: true    # hide automaticaly
 
   # Pjax
