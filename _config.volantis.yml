@@ -113,7 +113,7 @@ cover:
     home: true
     archive: false
     others: false # can be written in front-matter 'cover: true'
-  background: https://s1.328888.xyz/2022/08/08/0cXIg.jpg
+  background: https://blog.dianas.cyou/img/back.jpg
   # background: https://bing.ioliu.cn/v1/rand?w=1920&h=1200
   # logo: https://s1.328888.xyz/2022/08/08/0cYHh.jpg # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-Cover@3x.png
   title: 'Jasmine`s blog'
