@@ -761,6 +761,7 @@ rightmenus:
   # 右键自定义菜单区域
   menus:
     link:
+      - {id: 'new', name: '写篇博客', icon: 'fa fa-leaf', link: 'https://github.dev/sudoskys/Blog', group: 'link'}
       - {id: 'note', name: '即时笔记', icon: 'fa fa-paint-brush', link: 'https://www.notion.so/', group: 'link'}
       - {id: 'test', name: '即时测试', icon: 'fas fa-magic', link: 'https://colab.research.google.com/', group: 'link'}
       - {id: 'sponsor', name: '无障碍赞助', icon: 'fa fa-coffee', link: 'https://dun.mianbaoduo.com/@Sky0717', group: 'link'}
