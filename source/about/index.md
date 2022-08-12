@@ -33,7 +33,7 @@ twikoo:
 
 ## 我的友链
 ```
-name: 洛樱 Blog
+name: Jasmine Blog
 link: https://blog.dianas.cyou
 avatar: https://blog.dianas.cyou/img/favicon.png
 descr: 写点文字
