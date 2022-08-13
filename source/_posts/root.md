@@ -20,7 +20,7 @@ headimg: https://tuapi.eees.cc/dongman/TUAPI-EEES-CC--1074116557.jpg
 
 **大概有几种方法：**rec，fastboot，fastbootd，9008，mtk端口
 
-![c3v64ptb34tc8qacv7jg.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/eaf3892d-3368-43f8-a0c7-44cf5d00c0f3/c3v64ptb34tc8qacv7jg.png)
+![c3v64ptb34tc8qacv7jg.png](https://s1.328888.xyz/2022/08/13/TGFaP.png)
 
 Android 阵营厂商众多，的确很难保证他们步伐齐一，也就不存在某种一定通行的「通法」能够搞定任一 Android 设备的 `Magisk` 刷入。
 
@@ -108,7 +108,7 @@ GSI代表通用系统映像。这是一个文件系统映像，您可以将其�
 
 所以fastbootd 就是动态分区手机的 fastboot(指非动态分区手机的).
 
-![a5nZlt.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/066df575-7428-43e7-82ef-e0af5860c909/a5nZlt.png)
+![a5nZlt.png](https://s1.328888.xyz/2022/08/13/TGOJ6.png)
 
 [What is FastbootD? How to Boot to FastbootD Mode - DroidWin](https://www.droidwin.com/fastbootd-mode/)
 
@@ -724,13 +724,13 @@ Riru 已经停止维护，所以本节只讲 Zygisk
 
 打开面具，右上角点击齿轮进入面具设置界面。在面具设置界面下滑找到配置排除列表选项，点配置排除列表选项进入排除列表界面。在“Shamiko”模块的加持下，理论上你在排除列表勾选哪个应用，哪个应用就检测不到root。
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4265ed11-c590-4062-8bdc-2872c0475584/Untitled.png)
+![Untitled](https://s1.328888.xyz/2022/08/13/TGlSB.png)
 
 建议在面具排除列表勾选应用(即对应用隐藏root)后，最好检查一下应用是否在后台运行。如果是在后台运行，你最好结束一下，再打开应用。如果不是在后台运行，你就可以直接打开应用。**注意彻底结束进程**
 
 当面具排除列表勾选Momo后，打开Momo可以看到Momo已经不再提示找到可执行程序“su”、Magisk、Zygisk，说明“Shamiko”模块配合面具排除列表隐藏root是有效的。接下来我们如法炮制，在排除列表勾选那些检测到root后无法运行或者闪退的应用，比如银行类、金融类、游戏类应用。这样它们就检测不到root，也就可以正常运行了。下一部分(第七部分)我会再演示一遍对ZFB隐藏root，即排除列表勾选ZFB的步骤。
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0dfb0357-e0d3-4d3d-a0fc-f346b5c917bc/Untitled.png)
+![Untitled](https://s1.328888.xyz/2022/08/13/TGNcU.png)
 
 > 到了这一步可能有的朋友会有疑问，怎么我排除列表勾选了Momo的所有进程，Momo还是提示找到Magisk？找到二进制文件“su”？找到Zygisk？出现这种情况，一般是因为你安装的面具模块导致的。如果你不解决Momo的这些提示，大概率银行类金融类游戏类应用你还是打不开，所以你应该跳过第八部分看我第十部分的内容——停用面具模块。
 > 
@@ -753,7 +753,7 @@ Riru 已经停止维护，所以本节只讲 Zygisk
 
 进入面具排除列表，然后右上角搜索手机管家，大概率都会搜索不到，主要是方法不对，以下教大家查找手机管家的正确方法。
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c2ee40a4-b539-46e7-afc8-74353939cd1a/Untitled.png)
+![Untitled](https://s1.328888.xyz/2022/08/13/TGDNR.png)
 
 **停用面具模块**
 
