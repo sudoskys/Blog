@@ -967,7 +967,7 @@ python3 payload_dumper.py payload.bin
 
 [AKR社区](https://www.akr-developers.com/)
 
-## https://github.com/topjohnwu/Magisk
+## [Magisk](https://github.com/topjohnwu/Magisk)
 
 使用任何模块之前请考虑格机风险。模块推荐请自己查社区（酷安等）
 
@@ -983,7 +983,7 @@ python3 payload_dumper.py payload.bin
 
 [Magisk Modules Repository - Androidacy](https://www.androidacy.com/magisk-modules-repository/?utm_source=old-repo-link&utm_medium=web&utm_campaign=redirects)
 
-## https://github.com/LSPosed/LSPosed
+## [LSPosed](https://github.com/LSPosed/LSPosed)
 
 > LSPposed是一个模块框架，可以在不接触任何APK的情况下更改系统和应用程序的行为。这意味着模块可以适用于不同的版本甚至ROM，而无需任何更改（只要原始代码没有更改太多）。它也很容易撤消。由于所有更改都在内存中完成，因此您只需停用模块并重新启动即可恢复原始系统。
 > 
