@@ -51,7 +51,7 @@ cover:
     - name: 友链
       icon: fa fa-link
       #img: volantis-static/media/twemoji/assets/svg/1f516.svg #  https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f516.svg
-      url: /archives/
+      url: /friends/
     - name: 标签
       icon: fa fa-tags
       #img: volantis-static/media/twemoji/assets/svg/1f389.svg #  https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f389.svg
