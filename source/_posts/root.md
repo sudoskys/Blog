@@ -5,7 +5,7 @@ tags:
   - 指南
 copyright_info: 原创编写|材料采集与引用已注明
 copyright_author: LuoYing
-headimg: https://tuapi.eees.cc/dongman/TUAPI-EEES-CC--1074116557.jpg
+headimg: https://view.amogu.cn/images/2020/08/26/H471313089023408793f9f9813112bcbbz.jpg
 ---
 
 >本文大多数资料都是综合收集来的，不许商用，需要商用请和引用列表内的源取得授权
