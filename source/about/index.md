@@ -13,23 +13,14 @@ twikoo:
 
 ## About myself
 
-    High school student, not yet graduated
-    Python, android learner
-    Learner
+    I am a university student, I master Python/Lua and I am currently learning Kotlin/Go and front-end related skills.
+
 
 ## Contact with me
 
     Homepage: LOVE
     My GitHub: https://github.com/sudoskys
-    WORK E-mail: me@dianas.cyou (Often not online)
-
-## 喜欢谁的音乐？
-
-- ZHIEND
-- 刘森
-- 告五人
-
-
+    WORK E-mail: me@dianas.cyou
 
 ## 我的友链
 ```
