@@ -66,7 +66,6 @@ callz.enqueue(Callback{
 
 异步发起的请求会被加入到 `Dispatcher` 中的 `runningAsyncCalls`双端队列中，该请求是否可以立即发起受 maxRequests 和 maxRequestsPerHost 两个条件的限制。如果符合条件，那么就会从 readyAsyncCalls 取出并存到 runningAsyncCalls 中，然后交由 OkHttp 内部的线程池来执行。
 
-<br /><br />作者：业志陈<br />链接：https://www.jianshu.com/p/1b3d39c79e7e<br />来源：简书<br />著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 
 ### 同步GET请求
 
@@ -279,10 +278,12 @@ print(String(response.body().bytes(),"gb2312"))
 
 ## 参考 摘录
 
-<br />[Okhttp3基本使用 - 简书 (jianshu.com)](https://www.jianshu.com/p/da4a806e599b)
+[Okhttp3基本使用 - 简书](https://www.jianshu.com/p/da4a806e599b)
 
 代码手册APP--AndroluaBox
 
 nirenr写的代码
+
+[Okhttp3基本使用 - 简书](https://www.jianshu.com/p/1b3d39c79e7e)
 
 
