@@ -6,7 +6,7 @@ tags:
   - 配置
 copyright_info: 原创编写|材料采集与引用已注明
 copyright_author: LuoYing
-headimg: https://tva2.sinaimg.cn/large/9bd9b167gy1fwsigobbuqj21hc0u0npe.jpg
+cover: false
 ---
 
 

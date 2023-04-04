@@ -2,7 +2,7 @@
 title: HEXO本地一键备份本地
 date: 2021-10-30 14:15:29
 tags: Hexo
-headimg: https://tva1.sinaimg.cn/large/9bd9b167gy1g2qklwroj6j21hc0u0kha.jpg
+cover: false
 ---
 
 ![[object Object]](https://socialify.git.ci/sudoskys/HEXObackup/image?description=1&font=Rokkitt&issues=1&language=1&name=1&pattern=Floating%20Cogs&stargazers=1&theme=Light)
