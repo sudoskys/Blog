@@ -1,6 +1,11 @@
-- group: 技术交流
+- group: 小伙伴们
   description:
   items:
+    - title: Lss233's.Blog();
+      url: https://blog.lss233.com/
+      avatar: https://blog-1251229268.cos-website.ap-shanghai.myqcloud.com/kblog/content/images/2021/02/20160725222959_JGMRc.thumb.700_0-1.jpeg
+      description: Everything is possible by code.
+    
     - title: Dingyi·s BLOG
       url: https://blog.dingyi222666.top/about/
       avatar: http://q1.qlogo.cn/g?b=qq&nk=2187778735&s=140
@@ -31,7 +36,7 @@
       avatar: https://chat-profile.oss-cn-hangzhou.aliyuncs.com/3104/upload/099a11261a2611ed8362643b0f00165a/7049a3bd4237478696cff086628f995c.jpg
       description: 会搞点东西的普通高中生
 
-- group: 兴趣同好
+- group: 一起玩
   description:
   items:
     - title: Kagurachu·s BLOG
