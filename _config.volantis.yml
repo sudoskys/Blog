@@ -559,8 +559,8 @@ plugins:
     css: volantis-static/libs/aplayer/dist/APlayer.min.css # https://unpkg.com/aplayer@1.10/dist/APlayer.min.css
     # Required
     server: netease   # netease, tencent, kugou, xiami, baidu
-    type: album    # song, playlist, album, search, artist
-    id: 3332124    # song id / playlist id / album id / search keyword
+    type: artist    # song, playlist, album, search, artist
+    id: 35654284    # song id / playlist id / album id / search keyword
     autoplay: false   # audio autoplay
     # order: random       # player play order, values: 'list', 'random'
     loop: all         # player loop play, values: 'all', 'one', 'none'
