@@ -560,7 +560,7 @@ plugins:
     # Required
     server: netease   # netease, tencent, kugou, xiami, baidu
     type: album    # song, playlist, album, search, artist
-    id: 1929463582    # song id / playlist id / album id / search keyword
+    id: 3332124    # song id / playlist id / album id / search keyword
     autoplay: false   # audio autoplay
     # order: random       # player play order, values: 'list', 'random'
     loop: all         # player loop play, values: 'all', 'one', 'none'
