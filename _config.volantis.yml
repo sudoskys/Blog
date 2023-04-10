@@ -562,7 +562,7 @@ plugins:
     type: artist    # song, playlist, album, search, artist
     id: 35654284    # song id / playlist id / album id / search keyword
     autoplay: false   # audio autoplay
-    # order: random       # player play order, values: 'list', 'random'
+    order: random       # player play order, values: 'list', 'random'
     loop: all         # player loop play, values: 'all', 'one', 'none'
     volume: 0.4       # default volume, notice that player will remember user setting,
 
