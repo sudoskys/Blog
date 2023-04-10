@@ -5,7 +5,7 @@ tags:
   - Git
   - 配置
 copyright_info: 原创编写|材料采集与引用已注明
-copyright_author: LuoYing
+copyright_author: sudoskys
 cover: false
 ---
 

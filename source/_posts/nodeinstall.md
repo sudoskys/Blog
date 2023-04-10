@@ -3,7 +3,7 @@ title: Node环境与NPM安装配置
 date: 2021-10-30 08:28:10
 tags: Node
 copyright_info: 原创编写|材料采集与引用已注明
-copyright_author: LuoYing
+copyright_author: sudoskys
 cover: false
 ---
 

@@ -55,7 +55,7 @@ E:\Environment\RUST\rustup
 
 2021/8/25打包到GITHUB了
 
-[国内可访问](https://raw.githubusercontent.com/luoying2024/Sakura-animation/master/RUST.zip?raw=true)
+[国内可访问](https://raw.githubusercontent.com/sudoskys2024/Sakura-animation/master/RUST.zip?raw=true)
 
 #### 下载RUST
 

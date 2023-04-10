@@ -3,7 +3,7 @@ title: 部署Trilium
 date: 2022-7-5 14:28:10
 tags: Web Build
 copyright_info: 原创编写|材料采集与引用已注明
-copyright_author: LuoYing
+copyright_author: sudoskys
 cover: false
 ---
 
