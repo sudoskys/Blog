@@ -9,12 +9,9 @@ twikoo:
 
 <script src="https://3dbook.xyz/api/books/62c4508a36139800172e0015/cover.js"></script>
 
-
-
 ## About myself
 
     I am a university student, I master Python/Lua and I am currently learning Kotlin/Go and front-end related skills.
-
 
 ## Contact with me
 
@@ -23,6 +20,7 @@ twikoo:
     WORK E-mail: me@dianas.cyou
 
 ## 我的友链
+
 ```
 name: Jasmine Blog
 link: https://blog.dianas.cyou
@@ -31,5 +29,6 @@ descr: 写点文字
 ```
 
 ## 友链要求
+
 - 网站无违法内容
 - 网站在国内可以正常打开
