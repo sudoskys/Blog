@@ -332,7 +332,7 @@ style:
       title: '#333333' # 标题文本颜色
       text: '#4F4F4F' # 正文文本颜色
       code: '#5C5C5C' # 行内代码颜色
-      background: '#F9F9F9 radial-gradient(#FFF1F5 75%, #F9F9F9 100%) no-repeat fixed' # 网站背景颜色
+      background: '#FAFAFA radial-gradient(#FFF1F5 75%, #FAFAFA 100%) no-repeat fixed' # 网站背景颜色
     dark:
       theme: '#F48FB1' # 主题色
       mix: '#2E2E2E' # 深色背景颜色
