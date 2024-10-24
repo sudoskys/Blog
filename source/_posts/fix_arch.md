@@ -173,6 +173,16 @@ pacman-key --populate
 pacman-key --refresh-keys
 ```
 
+如果你在 Live CD 下遇到密钥问题，请输入以下命令：
+
+```bash
+pacman -S archlinux-keyring
+pacman-key --init
+pacman-key --populate
+```
+
+然后重新按照上面的文章步骤操作。
+
 ### 完成
 
 ```bash
