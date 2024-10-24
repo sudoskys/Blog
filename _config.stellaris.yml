@@ -50,7 +50,7 @@ article:
   auto_banner: false  # 从 https://source.unsplash.com/ 中自动搜索封面
   # 如果没有指定 excerpt 和 description，将自动取多长的内容作为文章摘要？
   auto_excerpt: 150
-  # 分类颜��
+  # 分类
   category_color:
     # 分类名: 分类颜色色号
     '新闻稿': '#DA0F47'
@@ -282,7 +282,7 @@ plugins:
     css: https://fastly.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css
     js: https://fastly.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js
 
-  # 使用 MathJax ���供数学公式支持
+  # 使用 MathJax 供数学公式支持
   # 需在 Markdown 文件开头加入 mathjax: true
   # 推荐使用 Pandoc: npm uninstall hexo-renderer-marked --save & npm install hexo-renderer-pandoc --save
   mathjax:
