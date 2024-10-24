@@ -96,7 +96,7 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: volantis
+theme: stellaris
 
 
 ## Rss:https://github.com/hexojs/hexo-generator-feed

@@ -4,7 +4,6 @@ date: 2021-8-22 06:22:37
 tags:
    - Rust
    - 配置
-cover: false
 ---
 
 ## 安装准备

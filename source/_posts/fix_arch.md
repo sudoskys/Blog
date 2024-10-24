@@ -2,7 +2,6 @@
 title: 记录一次修复 Arch Linux 的体验
 date: 2024-10-24 12:00:00
 tags: Arch Linux
-cover: false
 ---
 
 ## 前言

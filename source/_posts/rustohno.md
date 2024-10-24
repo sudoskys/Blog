@@ -4,9 +4,7 @@ date: 2021-8-22 06:25:37
 tags: 
    - Rust
    - 指南
-copyright_info: 原创编写|材料采集与引用已注明
-copyright_author: sudoskys
-cover: false
+
 ---
 
 ## Rust Cargo 指定国内镜像

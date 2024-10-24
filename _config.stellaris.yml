@@ -1,0 +1,395 @@
+stellar:
+  version: '2.1.0'
+  # homepage: 'https://blog.chyk.ink/wiki/stellaris/'
+  # repo: 'https://github.com/chiyuki0325/hexo-theme-stellaris'
+
+head:
+  open_graph:
+    # 链接预览
+    enabled: true
+  twitter_id:
+
+sidebar:
+  logo:
+    # 请在 Hexo 的 _config.yml 中设置头像链接
+    # 或使用 Markdown 语法自定义（如 '[https://xxx.png](/about/)'）
+    avatar: '[https://avatars.githubusercontent.com/u/75739606](/about/)'
+    # 可以使用 Markdown 语法自定义，支持 HTML 标签
+    #（如 '[<img no-lazy height="32px" src="xxx"/>](/)'）
+    title: '[config.title](/)'
+  menu:
+    post: '[最新](/)'
+    archives: '[文章](/archives/)'
+    links: '[友链](/links/)'
+  
+  widgets:
+    #### 自动生成的页面 ####
+    # 主页
+    home: search_blog, recent, tagcloud # for home
+    # 博客索引页
+    blog_index: search_blog, recent # for categories/tags/archives
+    # 其它（404）
+    others: search, recent # for 404 and ...
+    #### 手动创建的页面 ####
+    # 文章内页
+    post: toc, ghrepo, search, ghissues # for pages using 'layout:post'
+    # 其它 layout:page 的页面
+    page: toc, search # for custom pages using 'layout:page'
+
+
+breadcrumb:
+  # 面包屑导航栏中最左侧内容
+  home: home  # config.title / config.author / home 或自定义内容
+
+
+######## 博客文章 ########
+article:
+  # 如果没有指定封面，是否根据 tags 作为关键词搜索封面图片？
+  auto_cover: false  # 从 https://source.unsplash.com/ 中自动搜索封面
+  # 如果没有指定横幅，是否根据 tags 作为关键词搜索横幅图片？
+  auto_banner: false  # 从 https://source.unsplash.com/ 中自动搜索封面
+  # 如果没有指定 excerpt 和 description，将自动取多长的内容作为文章摘要？
+  auto_excerpt: 150
+  # 分类颜色
+  category_color:
+    # 分类名: 分类颜色色号
+    '新闻稿': '#DA0F47'
+  # 文章许可协议
+  license: '本文采用[署名-非商业性使用-相同方式共享 4.0 国际](https://creativecommons.org/licenses/by-nc-sa/4.0/) 许可协议，转载请注明出处。'
+  # 分享
+  share: [wechat, weibo, telegram, email, link]
+  related_posts:
+    enabled: true
+    max_count: 3
+    auto_cover: false
+  outdated_check:
+    # 文章过期检查，在文章发布后多少个月提示文章可能过期
+    enabled: true
+    month: 3
+
+######## 文章搜索 ########
+search:
+  # service 设置为 local_search 以启用文章搜索
+  # 在文章 front-matter 中设置 'indexing: false' 来避免被搜索索引
+  service: local_search
+  local_search:
+    # 如果你使用 CDN，可以上传 /js/search/local_search.js 并在此输入对应的链接
+    js: /js/search/local_search.js
+    path: /search.json  # 搜索索引文件存放位置
+
+
+######## 评论 ########
+comments:
+  service: utterances # beaudar, utterances, giscus, valine, twikoo, waline, artalk
+  # 在 404 页是否显示评论区？
+  enabled_in_404: false
+  ### utterances
+  # https://utteranc.es/
+  utterances:
+    repo: sudoskys/Blog-talk
+    issue-term: pathname
+    issue-number:
+    theme: preferred-color-scheme
+    label:
+
+######## 页脚 ########
+footer:
+  social:
+    ### 社交平台链接按钮（使用 HTML 语法）
+    # github:
+    #   icon: '<img no-lazy width="24" height="24" src="https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.3/social/08a41b181ce68.svg"/>'
+    #   url: /
+    # music:
+    #   icon: '<img width="24" height="24" src="https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.3/social/3845874.svg"/>'
+    #   url: /
+    # unsplash:
+    #   icon: '<img width="24" height="24" src="https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.3/social/3616429.svg"/>'
+    #   url: /
+    # comments:
+    #   icon: '<img width="24" height="24" src="https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.3/social/942ebbf1a4b91.svg"/>'
+    #   url: /about/#comments
+    # darkmode: # 键值为 darkmode 时配置为黑暗模式切换按钮（darkmode 须设置为 auto-switch），且此处仅按如下格式配置三个模式的图标
+    #   auto: '<img no-lazy width="24" height="24" src="/images/sun-moon.svg"/>'
+    #   light: '<img no-lazy width="24" height="24" src="/images/sun-fill.svg"/>'
+    #   dark: '<img no-lazy width="24" height="24" src="/images/moon-fill.svg"/>'
+  sitemap:
+    '博客':
+       - '[💡 近期发布](/)'
+       - '[📜 历史文章](/archives)'
+       - '[📊 标签](/tags)'
+       - '[🔗 友情链接](/links)'
+       - '[🐱 关于我](/about)'
+    '社交':
+       - '[🐱 GitHub](https://github.com/sudoskys)'
+    '其它':
+       - '[📈 状态监控](https://status.dianas.cyou/)'
+    '项目':
+       - '[🔧 Telegramify Markdown](https://github.com/sudoskys/telegramify-markdown)'
+       - '[🎨 NovelAI Python Lib](https://github.com/LlmKira/novelai-python)'
+       - '[🌐 Fast Langdetect](https://github.com/LlmKira/fast-langdetect)'
+       - '[🤖 Openai Chat Bot](https://github.com/LlmKira/Openaibot)'
+       - '[🐱 Kitan AntiAd Bot](https://github.com/TelechaBot/Kitan)'
+       - '[🖼️ Telegram Sticker CLI](https://github.com/sudoskys/tsticker)'
+       - '[🛠️ Telegram Sticker Utils](https://github.com/sudoskys/telegram-sticker-utils)'
+  license: '[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)'
+  # source: https://github.com/chiyuki0325/blog  # 博客源码信息
+  icp:  '未ICP备: 没有备案信息' # ICP 备案信息
+
+
+######## 标签插件 ########
+tag_plugins:
+  # {% note text %}
+  note:
+    default_color: ''  # light, dark, red, orange, yellow, green, cyan, blue, purple, warning, error
+
+  # {% checkbox %}
+  checkbox:
+    interactive: false  # 用户是否可切换勾选
+
+  # {% quot %}
+  quot:
+    default: # 可以自行配置多种图标方案
+      prefix: https://bu.dusays.com/2022/10/24/63567d3e092ff.png
+      suffix: https://bu.dusays.com/2022/10/24/63567d3e0ab55.png
+    hashtag:
+      prefix: https://bu.dusays.com/2022/10/24/63567d3e07da3.png
+    question:
+      prefix: ph:seal-question-fill
+
+  # {% emoji %}
+  emoji:
+    default: https://fastly.jsdelivr.net/gh/cdn-x/emoji/qq/%s.gif
+    twemoji: https://fastly.jsdelivr.net/gh/twitter/twemoji/assets/svg/%s.svg
+    qq: https://fastly.jsdelivr.net/gh/cdn-x/emoji/qq/%s.gif
+    aru: https://fastly.jsdelivr.net/gh/cdn-x/emoji/aru-l/%s.gif
+    tieba: https://fastly.jsdelivr.net/gh/cdn-x/emoji/tieba/%s.png
+
+  # {% image %}
+  image:
+    fancybox: false # true, false
+    parse_markdown: true # 把 markdown 格式的图片解析成图片标签
+
+  # {% timeline %}
+  timeline:
+    max-height: 80vh
+
+  # {% mark %}
+  mark:
+    default_color: dark # light, dark, red, orange, yellow, green, cyan, blue, purple, warning, error
+
+  # {% hashtag %}
+  hashtag:
+    default_color: yellow # red, orange, yellow, green, cyan, blue, purple
+
+  # {% bvideo %}
+  bvideo:
+    enabled: true
+    # 此 API 可自行部署
+    # https://github.com/chiyuki0325/stellaris-api
+    # 部署后输入 https://你部署的 API/bilibili/?url=
+    image_proxy: "https://stellaris-api.chyk.ink/bilibili/?url="
+    # 部署后输入 https://你部署的 API/bvideo_info/
+    video_info: "https://stellaris-api.chyk.ink/bvideo_info/"
+
+  # {% okr o1 percent:0.5 status:normal %}
+  okr:
+    border: true # 是否显示边框
+    status: # 可以自行增加
+      # 进行中状态
+      in_track:
+        color: blue # red, orange, yellow, green, cyan, blue, purple
+        label: 正常
+      at_risk:
+        color: yellow
+        label: 风险
+      off_track:
+        color: orange
+        label: 延期
+      # 结果状态
+      finished:
+        color: green
+        label: 已完成
+      unfinished:
+        color: red
+        label: 未完成
+  # {% video %}
+  video:
+    js: https://fastly.jsdelivr.net/npm/artplayer@5.0.9/dist/artplayer.js
+
+  # {% link %}
+  link:
+    siteinfo_api: https://stellaris-site-info.chyk.ink/api/v1/?url=${href}
+
+
+######## JS 插件 ########
+plugins:
+  ### 在头部信息中写入 dns-prefetch 和 preconnect 以加快加载
+  prefetch_and_preconnect: [ "https://fastly.jsdelivr.net" ]
+
+  ### 必须加载的核心 JS
+  jquery: https://fastly.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js
+  # marked: https://fastly.jsdelivr.net/npm/marked@4.0.2/marked.min.js
+  marked: https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/marked/4.0.2/marked.min.js
+  instant_click:
+    # js: https://fastly.jsdelivr.net/npm/instantclick@3.1.0/instantclick.min.js
+    js: https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/instantclick/3.1.0/instantclick.min.js
+
+  ### 主题动态布局插件
+  stellar:
+    sites: /js/plugins/sites.js
+    friends: /js/plugins/friends.js
+    ghinfo: /js/plugins/ghinfo.js
+    timeline: /js/plugins/timeline.js
+    linkcard: /js/plugins/linkcard.js
+    fcircle: /js/plugins/fcircle.js
+    bvideo: /js/plugins/bvideo.js
+
+  ### 可选插件
+
+  # 图片懒加载
+  # https://www.npmjs.com/package/vanilla-lazyload
+  lazyload:
+    enabled: true  # [hexo clean && hexo s] is required after changing this value.
+    # js: https://fastly.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js
+    js: https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/vanilla-lazyload/17.3.1/lazyload.min.js
+    transition: blur # blur, fade
+
+  # 页面滚动动画
+  # https://scrollrevealjs.org/api/reveal.html
+  scrollreveal:
+    enabled: true
+    # js: https://fastly.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js
+    js: https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/scrollReveal.js/4.0.9/scrollreveal.min.js
+    distance: 8px
+    duration: 500  # ms
+    interval: 100  # ms
+    scale: 1  # 0.1~1
+
+  # 使用 Fancybox 提供 **{% image %} 图片标签插件** 的点击放大视图
+  # 注：**可能并不支持原生 Markdown 图片语法！**
+  # https://fancyapps.com/docs/ui/fancybox/
+  fancybox:
+    enabled: true
+    js: https://fastly.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js
+    css: https://fastly.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css
+    # 可以处理评论区的图片（不支持 iframe 类评论系统）例如：
+    # 使用 valine 评论可以写: .vcontent img:not(.vemoji)
+    # 使用 twikoo 评论可以写: .tk-content img:not([class*="emo"])
+    # 使用 waline 评论可以写: #waline_container .vcontent img
+    selector: .swiper-slide img, .vcontent img:not(.vemoji), .tag-plugin.image img # 多个选择器用英文逗号隔开
+
+  # swiper
+  # https://swiperjs.com/
+  swiper:
+    enabled: true
+    css: https://fastly.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css
+    js: https://fastly.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js
+
+  # 使用 MathJax 提供数学公式支持
+  # 需在 Markdown 文件开头加入 mathjax: true
+  # 推荐使用 Pandoc: npm uninstall hexo-renderer-marked --save & npm install hexo-renderer-pandoc --save
+  mathjax:
+    enabled: false
+    per_page: false # 启用后无需在文章开头加 mathjax: true 即可启用
+    cdn: https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+
+  # 使用 Katex 提供数学公式支持
+  # https://katex.org/docs/autorender.html
+  # https://github.com/KaTeX/KaTeX
+  # 使用 hexo-renderer-markdown-it-plus 作为公式渲染器：npm uninstall hexo-renderer-marked --save npm install hexo-renderer-markdown-it-plus --save
+  katex:
+    enabled: false
+    # 使用 HTML 语法
+    min_css: <link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css" integrity="sha384-Xi8rHCmBmhbuyyhbI88391ZKP2dmfnOl4rT9ZfRI7mLTdk1wblIUnrIq35nqwEvC" crossorigin="anonymous">
+    min_js: <script defer src="https://fastly.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js" integrity="sha384-X/XCfMm41VSsqRNQgDerQczD69XqmjOOOwYQvr/uuC+j4OPoNhVgjdGFwhvN02Ja" crossorigin="anonymous"></script>
+    auto_render_min_js: <script defer src="https://fastly.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"onload="renderMathInElement(document.body);"></script>
+
+  # 代码块复制按钮
+  copycode:
+    enabled: true
+    js: /js/plugins/copycode.js
+    default_text: '复制'
+    success_text: '已复制'
+
+
+######## 样式 ########
+style:
+  darkmode: auto # auto / always / false / auto-switch
+  smooth_scroll: true # true / false
+  font-size:
+    root: 16px
+    body: .9375rem  # 15px
+    code: 85%  # 14px
+    codeblock: 0.8125rem # 13px
+  text-align: left
+  color:
+    common:
+      accent: '#f48fb1' # 强调色
+      button: '#EE9CB3' # 按钮颜色
+      hover: '#FFAAB2' # 按钮高亮颜色
+    light:
+      theme: '#f48fb1' # 主题色
+      mix: '#eff4f9' # 浅色背景颜色
+      block: '#EEF0F2' # 块背景颜色
+      card: '#fafbfd' # 卡片背景颜色
+      title: '#000' # 标题文本颜色
+      text: '#1a1a1a' # 正文文本颜色
+      code: 'black' # 行内代码颜色
+      background: '#f3f3f3 radial-gradient(#eff4f9 75%, #f3f3f3 100%) no-repeat fixed' # 网站背景颜色
+    dark:
+      theme: '#EE9CB3' # 主题色
+      mix: '#313438' # 深色背景颜色
+      background-mobile: black # 移动端深色背景（OLED调成纯黑可以省电）
+      block: '#2B2F33' # 块背景颜色
+      card: '#282a39' # 卡片背景颜色
+      title: '#fff' # 标题文本颜色
+      text: '#eee' # 正文文本颜色
+      code: '#eee' # 行内代码颜色
+      background: '#636267' # 网站背景颜色
+  animated_avatar:
+    animate: auto # auto, always
+    background: https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.2/avatar/round/rainbow64@3x.webp
+  codeblock:
+    scrollbar: 4px
+    highlightjs_theme: https://fastly.jsdelivr.net/gh/highlightjs/cdn-release@11.5.0/build/styles/atom-one-dark.min.css
+  font-family:
+    logo: 'HarmonyOS_Regular, system-ui, -apple-system, sans-serif'
+    body: 'HarmonyOS_Regular, system-ui, -apple-system, sans-serif'
+    code: 'Menlo, Monaco, Consolas, system-ui, "Courier New", monospace, sans-serif'
+    codeblock: 'Menlo, Monaco, Consolas, system-ui, "Courier New", monospace, sans-serif'
+  custom_font_css:
+    # 自定义字体
+    enabled: true
+    css: "https://s1.hdslb.com/bfs/static/jinkela/long/font/regular.css"
+
+
+######## 缺省资源文件 ########
+default:
+  avatar: https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/avatar/round/3442075.svg
+  link: https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/link/8f277b4ee0ecd.svg
+  cover: https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/cover/76b86c0226ffd.svg
+  image: https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg
+
+
+######## API ########
+api_host:
+  ghapi: https://api.github.com
+  ghraw: https://raw.githubusercontent.com
+  gist: https://gist.github.com
+
+
+######## 自定义插件 ########
+inject:
+  # script:
+  #   # 使用 HTML 语法
+  #   - '<script src="https://example.com/my_script.js" data-no-instant="true"></script>'
+  #   # data-no-instant 为 InstantClick 属性，决定某脚本在页面切换时是否重新加载
+  #   # 如果此脚本只需要加载一次（比如添加全局对象），那么为 true
+  #   # 如果此脚本每页都需要重复加载（比如编辑页面元素或需要使用 window.onload），那么为 false
+  # head:
+  #   # 使用 HTML 语法
+  #   - '<meta name="key" content="value"></meta>'
+  #   - '<link rel="stylesheet" href="/css/1.css"></link>'
+  # 由于 Stylus 的特性，暂不支持 inject CSS
+  # 如果要使用自定义 CSS，请在 _source/css 下创建 css 文件
+  # 之后使用上文的 head 来引入

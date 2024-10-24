@@ -3,9 +3,6 @@ title: Root 不完全指北
 date: 2022-8-13 19:28:10
 tags: 
   - 指南
-copyright_info: 原创编写|材料采集与引用已注明
-copyright_author: sudoskys
-# headimg: https://s1.xptou.com/2022/09/13/631ffb8bc4440.jpg
 ---
 
 >本文大多数资料都是综合收集来的，不许商用，需要商用请和引用列表内的源取得授权

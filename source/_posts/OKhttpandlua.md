@@ -4,8 +4,9 @@ date: 2021-10-29 23:45:55
 tags: 
    - Android
    - Okhttp
-cover: false
 ---
+
+
 # OKhttp在Androlua中的初级应用
 
 HTTP是现代应用常用的一种交换数据和媒体的网络方式，高效地使用HTTP能让资源加载更快，节省带宽。

@@ -1,0 +1,55 @@
+my_friends:
+    - title: "Lss233's.Blog();"
+      url: https://blog.lss233.com/
+      avatar: https://blog-1251229268.cos-website.ap-shanghai.myqcloud.com/kblog/content/images/2021/02/20160725222959_JGMRc.thumb.700_0-1.jpeg
+      description: "Everything is possible by code."
+      # 添加 screenshot 字段
+      screenshot: # 这里可以添加截图链接
+
+    - title: "Dingyi·s BLOG"
+      url: https://blog.dingyi222666.top/about/
+      avatar: http://q1.qlogo.cn/g?b=qq&nk=2187778735&s=140
+      description: "Java/安卓/前端"
+      screenshot: # 这里可以添加截图链接
+
+    - title: "K1t3AB's Blog|"
+      url: https://blog.kiteab.me
+      avatar: https://www.gravatar.com/avatar/4037fef5460f3e87f9a711d8af50557e?s=1000
+      description: "准初二废物一个|ArchUser/Kotlin"
+      screenshot: # 这里可以添加截图链接
+
+    - title: "Purofle的Blog"
+      url: https://blog.archlinux.tech
+      avatar: https://q1.qlogo.cn/g?b=qq&nk=3272912942&s=640
+      description: "前端/Kotlin"
+      screenshot: # 这里可以添加截图链接
+
+    - title: "ChiTang"
+      url: https://blog.chitang.dev
+      avatar: https://chat-profile.oss-cn-hangzhou.aliyuncs.com/3104/upload/555653de1b2711ed8362643b0f00165a/4650c7c3a8a04162b7869c04ca127706.jpg
+      description: "叫我池塘就好/云应用搭建"
+      screenshot: # 这里可以添加截图链接
+
+    - title: "BLxcwg666 's Blog"
+      url: https://blog.cyznb.eu.org/
+      avatar: https://www.cyznb.eu.org/imgs/head1x2.png
+      description: "BLxcwg666/小陈网管 的博客/云应用搭建"
+      screenshot: # 这里可以添加截图链接
+
+    - title: "March 7th"
+      url: https://march7th.tk/
+      avatar: https://chat-profile.oss-cn-hangzhou.aliyuncs.com/3104/upload/099a11261a2611ed8362643b0f00165a/7049a3bd4237478696cff086628f995c.jpg
+      description: "会搞点东西的普通高中生"
+      screenshot: # 这里可以添加截图链接
+
+    - title: "Kagurachu·s BLOG"
+      url: https://www.lolicon.cyou/
+      avatar: https://s1.328888.xyz/2022/08/08/0ogL0.jpg
+      description: "（我也不知道写点啥"
+      screenshot: # 这里可以添加截图链接
+
+    - title: "teble·s BLOG"
+      url: https://blog.teble.me/
+      avatar: https://cdn.jsdelivr.net/gh/teble/teble.github.io@blog-images/img/20211202173817.png
+      description: "摸鱼儿"
+      screenshot: # 这里可以添加截图链接
