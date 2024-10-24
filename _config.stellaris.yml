@@ -102,9 +102,6 @@ footer:
     # music:
     #   icon: '<img width="24" height="24" src="https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.3/social/3845874.svg"/>'
     #   url: /
-    # unsplash:
-    #   icon: '<img width="24" height="24" src="https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.3/social/3616429.svg"/>'
-    #   url: /
     # comments:
     #   icon: '<img width="24" height="24" src="https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.3/social/942ebbf1a4b91.svg"/>'
     #   url: /about/#comments
