@@ -42,9 +42,7 @@ echo "Server = https://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch" > /etc/pacm
 
 ```bash
 mount -t btrfs -o subvol=/@,compress=zstd /dev/nvme0n1p3 /mnt # 挂载 / 目录
-mkdir /mnt/home # 创建 /home 目录
 mount -t btrfs -o subvol=/@home,compress=zstd /dev/nvme0n1p3 /mnt/home # 挂载 /home 目录
-mkdir -p /mnt/boot # 创建 /boot 目录
 mount /dev/nvme0n1p1 /mnt/boot # 挂载 /boot 目录
 swapon /dev/nvme0n1p2 # 挂载交换分区
 ```
