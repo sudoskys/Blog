@@ -321,28 +321,28 @@ style:
   text-align: left
   color:
     common:
-      accent: '#E91E63' # 强调色
-      button: '#D81B60' # 按钮颜色
-      hover: '#C2185B' # 按钮高亮颜色
+      accent: '#F8BBD0' # 强调色
+      button: '#F48FB1' # 按钮颜色
+      hover: '#F06292' # 按钮高亮颜色
     light:
-      theme: '#F8BBD0' # 主题色
-      mix: '#FCE4EC' # 浅色背景颜色
+      theme: '#FCE4EC' # 主题色
+      mix: '#FFF1F5' # 浅色背景颜色
       block: '#FFFFFF' # 块背景颜色
-      card: '#F8F9FA' # 卡片背景颜色
-      title: '#212121' # 标题文本颜色
-      text: '#424242' # 正文文本颜色
-      code: '#616161' # 行内代码颜色
-      background: '#F3F3F3 radial-gradient(#FCE4EC 75%, #F3F3F3 100%) no-repeat fixed' # 网站背景颜色
+      card: '#FAFAFA' # 卡片背景颜色
+      title: '#333333' # 标题文本颜色
+      text: '#4F4F4F' # 正文文本颜色
+      code: '#5C5C5C' # 行内代码颜色
+      background: '#F9F9F9 radial-gradient(#FFF1F5 75%, #F9F9F9 100%) no-repeat fixed' # 网站背景颜色
     dark:
-      theme: '#AD1457' # 主题色
-      mix: '#303030' # 深色背景颜色
-      background-mobile: '#212121' # 移动端深色背景
-      block: '#424242' # 块背景颜色
-      card: '#37474F' # 卡片背景颜色
-      title: '#E0E0E0' # 标题文本颜色
-      text: '#BDBDBD' # 正文文本颜色
-      code: '#BDBDBD' # 行内代码颜色
-      background: '#212121' # 网站背景颜色
+      theme: '#F48FB1' # 主题色
+      mix: '#2E2E2E' # 深色背景颜色
+      background-mobile: '#1C1C1C' # 移动端深色背景
+      block: '#3A3A3A' # 块背景颜色
+      card: '#2F2F2F' # 卡片背景颜色
+      title: '#E8E8E8' # 标题文本颜色
+      text: '#D0D0D0' # 正文文本颜色
+      code: '#C0C0C0' # 行内代码颜色
+      background: '#1C1C1C' # 网站背景颜色
   animated_avatar:
     animate: auto # auto, always
     background: https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.2/avatar/round/rainbow64@3x.webp
@@ -390,4 +390,5 @@ inject:
   # 由于 Stylus 的特性，暂不支持 inject CSS
   # 如果要使用自定义 CSS，请在 _source/css 下创建 css 文件
   # 之后使用上文的 head 来引入
+
 
