@@ -50,7 +50,7 @@ article:
   auto_banner: false  # 从 https://source.unsplash.com/ 中自动搜索封面
   # 如果没有指定 excerpt 和 description，将自动取多长的内容作为文章摘要？
   auto_excerpt: 150
-  # 分类颜色
+  # 分类颜��
   category_color:
     # 分类名: 分类颜色色号
     '新闻稿': '#DA0F47'
@@ -220,7 +220,7 @@ tag_plugins:
 
 ######## JS 插件 ########
 plugins:
-  ### 在头部信息中写入 dns-prefetch 和 preconnect 以加快加载
+  ### 在头部��息中写入 dns-prefetch 和 preconnect 以加快加载
   prefetch_and_preconnect: [ "https://fastly.jsdelivr.net" ]
 
   ### 必须加载的核心 JS
@@ -282,7 +282,7 @@ plugins:
     css: https://fastly.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css
     js: https://fastly.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js
 
-  # 使用 MathJax 提供数学公式支持
+  # 使用 MathJax ���供数学公式支持
   # 需在 Markdown 文件开头加入 mathjax: true
   # 推荐使用 Pandoc: npm uninstall hexo-renderer-marked --save & npm install hexo-renderer-pandoc --save
   mathjax:
@@ -321,28 +321,28 @@ style:
   text-align: left
   color:
     common:
-      accent: '#F8BBD0' # 强调色
-      button: '#F48FB1' # 按钮颜色
-      hover: '#F06292' # 按钮高亮颜色
+      accent: '#ff6347' # 强调色（番茄红）
+      button: '#ff6347' # 按钮颜色（番茄红）
+      hover: '#ff7f50' # 按钮高亮颜色（珊瑚色）
     light:
-      theme: '#FCE4EC' # 主题色
-      mix: '#FFF1F5' # 浅色背景颜色
-      block: '#FFFFFF' # 块背景颜色
-      card: '#FAFAFA' # 卡片背景颜色
-      title: '#333333' # 标题文本颜色
-      text: '#4F4F4F' # 正文文本颜色
-      code: '#5C5C5C' # 行内代码颜色
-      background: '#FAFAFA radial-gradient(#FFF1F5 75%, #FAFAFA 100%) no-repeat fixed' # 网站背景颜色
+      theme: '#ff6347' # 主题色（番茄红）
+      mix: '#fffaf0' # 浅色背景颜色（象牙白）
+      block: '#f0f0f0' # 块背景颜色（浅灰色）
+      card: '#ffffff' # 卡片背景颜色（白色）
+      title: '#333' # 标题文本颜色（深灰色）
+      text: '#4a4a4a' # 正文文本颜色（中灰色）
+      code: '#ff4500' # 行内代码颜色（橘红色）
+      background: '#fffaf0 radial-gradient(#f0f0f0 75%, #fffaf0 100%) no-repeat fixed' # 网站背景颜色
     dark:
-      theme: '#F48FB1' # 主题色
-      mix: '#2E2E2E' # 深色背景颜色
-      background-mobile: '#1C1C1C' # 移动端深色背景
-      block: '#3A3A3A' # 块背景颜色
-      card: '#2F2F2F' # 卡片背景颜色
-      title: '#E8E8E8' # 标题文本颜色
-      text: '#D0D0D0' # 正文文本颜色
-      code: '#C0C0C0' # 行内代码颜色
-      background: '#1C1C1C' # 网站背景颜色
+      theme: '#ff6347' # 主题色（番茄红）
+      mix: '#2f2f2f' # 深色背景颜色（深灰色）
+      background-mobile: '#000' # 移动端深色背景（黑色）
+      block: '#3b3b3b' # 块背景颜色（深灰色）
+      card: '#383838' # 卡片背景颜色（深灰色）
+      title: '#fff' # 标题文本颜色（白色）
+      text: '#eee' # 正文文本颜色（浅灰色）
+      code: '#ff4500' # 行内代码颜色（橘红色）
+      background: '#202020 radial-gradient(#2f2f2f 25%, #202020 100%) no-repeat fixed' # 网站背景颜色
   animated_avatar:
     animate: auto # auto, always
     background: https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.2/avatar/round/rainbow64@3x.webp
@@ -390,5 +390,9 @@ inject:
   # 由于 Stylus 的特性，暂不支持 inject CSS
   # 如果要使用自定义 CSS，请在 _source/css 下创建 css 文件
   # 之后使用上文的 head 来引入
+
+
+
+
 
 
