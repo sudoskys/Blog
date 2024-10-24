@@ -7,28 +7,35 @@ twikoo:
   placeholder: 有什么想对我说的呢？
 ---
 
-<script src="https://3dbook.xyz/api/books/62c4508a36139800172e0015/cover.js"></script>
+# 关于我
 
-## About myself
+我是一名全栈开发工程师,热衷于探索各种技术并开发个人小项目。目前,我主要关注工程化和人工智能等领域。
 
-    I am a university student, I master Python/Lua and I am currently learning Kotlin/Go and front-end related skills.
+由于我还在学习阶段,可用于工作的时间有限,因此博客更新频率可能不会很高。
 
-## Contact with me
+## 联系方式
 
-    Homepage: LOVE
-    My GitHub: https://github.com/sudoskys
-    WORK E-mail: me@dianas.cyou
+如果您有任何问题或想法，可以通过以下方式与我联系:
 
-## 我的友链
+- GitHub: [https://github.com/sudoskys](https://github.com/sudoskys)
+- 电子邮件: [me@dianas.cyou](mailto:me@dianas.cyou)
 
+对于紧急事务，可以直接发 Issue 给我！因为我的邮箱可能不会及时回复，大概率是过好几天才看到。
+
+## 添加友情链接
+
+如果您想将您的个人博客添加到我的友链列表中,请按以下格式发送电子邮件给我:
+
+```markdown
+name: 您的名字
+link: 您的博客链接
+avatar: 您的头像链接
+descr: 一句话描述您的博客
 ```
-name: Jasmine Blog
-link: https://blog.dianas.cyou
-avatar: https://blog.dianas.cyou/img/favicon.png
-descr: 写点文字
-```
 
-## 友链要求
+### 友链要求
 
-- 网站无违法内容
-- 网站在国内可以正常打开
+- 内容健康,不违反法律法规
+- 不包含广告内容
+
+就这样啦，感谢你能看到这里。
