@@ -5,7 +5,26 @@ my_friends:
       description: "Everything is possible by code."
       # 添加 screenshot 字段
       screenshot: # 这里可以添加截图链接
+    
+    - title: "風雪城"
+      url: https://blog.chyk.ink/
+      avatar: https://q1.qlogo.cn/g?b=qq&nk=3526514925&s=640
+      description: "浩繁星空下的一场稚嫩的梦"
+      screenshot: # 这里可以添加截图链接
 
+    - title: "资源管理器博客"
+      url: https://www.zyglq.cn/
+      avatar: https://cos.zyglq.cn/static/web-logo.jpg
+      description: "心中有光，对立重伤"
+      screenshot: https://imgsrc.baidu.com/forum/pic/item/203fb80e7bec54e7ecf34eddfc389b504ec26ad2.jpg
+
+    - title: "Takami's Blog"
+      url: https://lar.moe
+      description: "Hana to Uta"
+      avatar: https://lar.moe/_next/image?url=https%3A%2F%2Fcdn.lar.moe%2Fstatic%2Favatar%2Fme.webp&w=640&q=75
+      screenshot: https://imgsrc.baidu.com/forum/pic/item/7aec54e736d12f2e86dc65a50ac2d5628435681e.jpg
+      
+    
     - title: "Dingyi·s BLOG"
       url: https://blog.dingyi222666.top/about/
       avatar: http://q1.qlogo.cn/g?b=qq&nk=2187778735&s=140
