@@ -6,7 +6,6 @@ tags:
    - Okhttp
 ---
 
-
 # OKhttp在Androlua中的初级应用
 
 HTTP是现代应用常用的一种交换数据和媒体的网络方式，高效地使用HTTP能让资源加载更快，节省带宽。
@@ -20,11 +19,11 @@ OkHttp是一个高效的HTTP客户端，它有以下默认特性：
 
  当网络出现问题的时候OkHttp依然坚守自己的职责，它会自动恢复一般的连接问题，如果你的服务有多个IP地址，当第一个IP请求失败时，OkHttp会交替尝试你配置的其他IP，OkHttp使用现代TLS技术(SNI, ALPN)初始化新的连接，当握手失败时会回退到TLS 1.0。
 
->  OkHttp 支持 Android 2.3 及以上版本Android平台， 对于 Java, JDK 1.7及以上.
+> OkHttp 支持 Android 2.3 及以上版本Android平台， 对于 Java, JDK 1.7及以上.
 
 官方仓库地址
 
-[ https://github.com/square/okhttp](https://links.jianshu.com/go?to=https%3A%2F%2Fgithub.com%2Fsquare%2Fokhttp)
+[https://github.com/square/okhttp](https://links.jianshu.com/go?to=https%3A%2F%2Fgithub.com%2Fsquare%2Fokhttp)
 
 DEX下载
 
@@ -66,7 +65,6 @@ callz.enqueue(Callback{
 ```
 
 异步发起的请求会被加入到 `Dispatcher` 中的 `runningAsyncCalls`双端队列中，该请求是否可以立即发起受 maxRequests 和 maxRequestsPerHost 两个条件的限制。如果符合条件，那么就会从 readyAsyncCalls 取出并存到 runningAsyncCalls 中，然后交由 OkHttp 内部的线程池来执行。
-
 
 ### 同步GET请求
 
@@ -245,7 +243,6 @@ end--nirenr
 
  [Android知名三方库OKHttp(二) - 手写简易版 - 简书 (jianshu.com)](https://www.jianshu.com/p/65226c0f2a3e)
 
-
 ## OkHttp3架构分析
 
 指路
@@ -253,7 +250,6 @@ end--nirenr
 [OkHttp3架构分析 - 简书 (jianshu.com)](https://www.jianshu.com/p/9deec36f2759)
 
 [三方库源码笔记（11）-OkHttp 源码详解 - 简书 (jianshu.com)](https://www.jianshu.com/p/1b3d39c79e7e)
-
 
 ## 编码处理-应对GB2312的办法
 
@@ -264,14 +260,14 @@ print(String(response.body().bytes(),"gb2312"))
 
 ## OKhttp优缺点
 
-#### 优点
+### 优点
 
 支持SPDY, 可以合并多个到同一个主机的请求。
 
 使用连接池技术减少请求的延迟(如果SPDY是可用的话) 。
 使用GZIP压缩减少传输的数据量，避免重复的网络请求、拦截器等等。
 
-#### 缺点
+### 缺点
 
 第一缺点是回调需要切到主线程，主线程要自己去写，还有就是传入调用比较复杂。
 
@@ -286,5 +282,3 @@ print(String(response.body().bytes(),"gb2312"))
 nirenr写的代码
 
 [Okhttp3基本使用 - 简书](https://www.jianshu.com/p/1b3d39c79e7e)
-
-
