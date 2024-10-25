@@ -220,7 +220,7 @@ tag_plugins:
 
 ######## JS 插件 ########
 plugins:
-  ### 在头���息中写入 dns-prefetch 和 preconnect 以加快加载
+  ### 在头息中写入 dns-prefetch 和 preconnect 以加快加载
   prefetch_and_preconnect: [ "https://fastly.jsdelivr.net" ]
 
   ### 必须加载的核心 JS
@@ -321,28 +321,28 @@ style:
   text-align: left
   color:
     common:
-      accent: '#ffb6c1' # 强调色（浅粉红色）
-      button: '#ffb6c1' # 按钮颜色（浅粉红色）
-      hover: '#ff69b4' # 按钮高亮颜色（热粉色）
+      accent: '#6264A7' # 强调色（中紫色，Fluent UI 紫色）
+      button: '#8B8CC7' # 按钮颜色（稍浅的紫色）
+      hover: '#464775' # 按钮高亮颜色（深紫色）
     light:
-      theme: '#ffb6c1' # 主题色（浅粉红色）
-      mix: '#fffaf0' # 浅色背景颜色（象牙白）
-      block: '#f8f8ff' # 块背景颜色（幽灵白）
-      card: '#ffffff' # 卡片背景颜色（白色）
-      title: '#333' # 标题文本颜色（深灰色）
-      text: '#4a4a4a' # 正文文本颜色（中灰色）
-      code: '#ff69b4' # 行内代码颜色（热粉色）
-      background: '#fffaf0 radial-gradient(#f8f8ff 75%, #fffaf0 100%) no-repeat fixed' # 网站背景颜色/阅读背景颜色
+      theme: '#6264A7' # 主题色（Fluent UI 紫色）
+      mix: '#F3F2F1' # 浅色背景颜色（Fluent UI 浅灰色）
+      block: '#E1DFDD' # 块背景颜色（Fluent UI 更浅的灰色）
+      card: '#FFFFFF' # 卡片背景颜色（白色）
+      title: '#323130' # 标题文本颜色（Fluent UI 深灰色）
+      text: '#605E5C' # 正文文本颜色（Fluent UI 中灰色）
+      code: '#6264A7' # 行内代码颜色（主题紫色）
+      background: '#FAF9F8 radial-gradient(#F3F2F1 75%, #FAF9F8 100%) no-repeat fixed' # 网站背景颜色
     dark:
-      theme: '#ffb6c1' # 主题色（浅粉红色）
-      mix: '#2f2f2f' # 深色背景颜色（深灰色）
-      background-mobile: '#000' # 移动端深色背景（黑色）
-      block: '#3b3b3b' # 块背景颜色（深灰色）
-      card: '#383838' # 卡片背景颜色（深灰色）
-      title: '#fff' # 标题文本颜色（白色）
-      text: '#eee' # 正文文本颜色（浅灰色）
-      code: '#ff69b4' # 行内代码颜色（热粉色）
-      background: '#202020 radial-gradient(#2f2f2f 25%, #202020 100%) no-repeat fixed' # 网站背景颜色/阅读背景颜色
+      theme: '#6264A7' # 主题色（Fluent UI 紫色）
+      mix: '#292827' # 深色背景颜色（Fluent UI 深灰色）
+      background-mobile: '#201F1E' # 移动端深色背景（Fluent UI 更深的灰色）
+      block: '#3B3A39' # 块背景颜色（Fluent UI 深灰色）
+      card: '#323130' # 卡片背景颜色（Fluent UI 深灰色）
+      title: '#FFFFFF' # 标题文本颜色（白色）
+      text: '#C8C6C4' # 正文文本颜色（Fluent UI 浅灰色）
+      code: '#B4A0FF' # 行内代码颜色（浅紫色）
+      background: '#201F1E radial-gradient(#292827 25%, #201F1E 100%) no-repeat fixed' # 网站背景颜色
   animated_avatar:
     animate: auto # auto, always
     background: https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.2/avatar/round/rainbow64@3x.webp
@@ -350,14 +350,14 @@ style:
     scrollbar: 4px
     highlightjs_theme: https://fastly.jsdelivr.net/gh/highlightjs/cdn-release@11.5.0/build/styles/atom-one-dark.min.css
   font-family:
-    logo: 'HarmonyOS_Regular, system-ui, -apple-system, sans-serif'
-    body: 'HarmonyOS_Regular, system-ui, -apple-system, sans-serif'
+    logo: 'LXGW WenKai Screen, system-ui, -apple-system, sans-serif'
+    body: 'Segoe UI, system-ui, -apple-system, sans-serif'
     code: 'Menlo, Monaco, Consolas, system-ui, "Courier New", monospace, sans-serif'
     codeblock: 'Menlo, Monaco, Consolas, system-ui, "Courier New", monospace, sans-serif'
   custom_font_css:
     # 自定义字体
     enabled: true
-    css: "https://s1.hdslb.com/bfs/static/jinkela/long/font/regular.css"
+    css: "https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-web/style.css"
 
 
 ######## 缺省资源文件 ########
@@ -390,6 +390,7 @@ inject:
   # 由于 Stylus 的特性，暂不支持 inject CSS
   # 如果要使用自定义 CSS，请在 _source/css 下创建 css 文件
   # 之后使用上文的 head 来引入
+
 
 
 
