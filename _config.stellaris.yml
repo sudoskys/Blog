@@ -330,7 +330,7 @@ style:
       block: '#E1DFDD' # 块背景颜色（Fluent UI 更浅的灰色）
       card: '#FFFFFF' # 卡片背景颜色（白色）
       title: '#323130' # 标题文本颜色（Fluent UI 深灰色）
-      text: '#605E5C' # 正文文本颜色（Fluent UI 中灰色）
+      text: '#201F1E' # 正文文本颜色（Fluent UI 更深的灰色，接近黑色）
       code: '#6264A7' # 行内代码颜色（主题紫色）
       background: '#FAF9F8 radial-gradient(#F3F2F1 75%, #FAF9F8 100%) no-repeat fixed' # 网站背景颜色
     dark:
@@ -340,7 +340,7 @@ style:
       block: '#3B3A39' # 块背景颜色（Fluent UI 深灰色）
       card: '#323130' # 卡片背景颜色（Fluent UI 深灰色）
       title: '#FFFFFF' # 标题文本颜色（白色）
-      text: '#C8C6C4' # 正文文本颜色（Fluent UI 浅灰色）
+      text: '#F3F2F1' # 正文文本颜色（Fluent UI 浅灰色，接近白色）
       code: '#B4A0FF' # 行内代码颜色（浅紫色）
       background: '#201F1E radial-gradient(#292827 25%, #201F1E 100%) no-repeat fixed' # 网站背景颜色
   animated_avatar:
@@ -390,6 +390,7 @@ inject:
   # 由于 Stylus 的特性，暂不支持 inject CSS
   # 如果要使用自定义 CSS，请在 _source/css 下创建 css 文件
   # 之后使用上文的 head 来引入
+
 
 
 
