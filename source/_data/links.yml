@@ -50,9 +50,9 @@ my_friends:
       screenshot: # 这里可以添加截图链接
 
     - title: "BLxcwg666 's Blog"
-      url: https://blog.cyznb.eu.org/
-      avatar: https://www.cyznb.eu.org/imgs/head1x2.png
-      description: "BLxcwg666/小陈网管 的博客/云应用搭建"
+      url: https://blog.nekorua.com/
+      avatar: https://blog.nekorua.com/_next/image?url=https%3A%2F%2Fcos.nekorua.com%2Fimgs%2Favatar.webp&w=640&q=75
+      description: "BLxcwg666 的博客"
       screenshot: # 这里可以添加截图链接
 
     - title: "March 7th"
