@@ -10,7 +10,7 @@ tags: Ubuntu
 >
 > 大多时候用于Ubuntu server的开发，后台开发还是非常合适的。
 >
-> <br />微欧小v—https://www.zhihu.com/question/449404869/answer/1920214736<br />
+> <br />微欧小v—<https://www.zhihu.com/question/449404869/answer/1920214736><br />
 >
 
 ### 微软配置
@@ -25,7 +25,7 @@ tags: Ubuntu
 
 [Manually download Windows Subsystem for Linux (WSL) Distros | Microsoft Docs](https://docs.microsoft.com/en-us/windows/wsl/install-manual)
 
-https://wsldownload.azureedge.net/Ubuntu_2004.2020.424.0_x64.appx
+<https://wsldownload.azureedge.net/Ubuntu_2004.2020.424.0_x64.appx>
 
 # 安装方式二
 
@@ -68,15 +68,15 @@ C:\Users\15758>lxrunoffline i -n ubuntu -d D:\MyApp\Ubuntu18 -f D:\MyApp\Ubuntu1
 
 #### 二选一
 
-https://raw.githubusercontent.com/DDoSolitary/LxRunOffline/releases/download/v3.5.0/LxRunOffline-v3.5.0-mingw.zip
+<https://raw.githubusercontent.com/DDoSolitary/LxRunOffline/releases/download/v3.5.0/LxRunOffline-v3.5.0-mingw.zip>
 
-https://github.com/DDoSolitary/LxRunOffline/releases
+<https://github.com/DDoSolitary/LxRunOffline/releases>
 
 下载文件LxRunOffline-vxxxx.zip  然后解压到某个一个目录中，之后我们需要设置环境变量，用来移动我们的子系统，所以不可以删除.
 
 #### 下载Mingw64
 
-下载地址: http://www.mingw-w64.org/doku.php ,之后解压到相关路径。
+下载地址: <http://www.mingw-w64.org/doku.php> ,之后解压到相关路径。
 
 PS:这里只需要解压到E:\Environment\mingw64里面，里面没有可执行文件哦。
 
