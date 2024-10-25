@@ -21,7 +21,7 @@ my_friends:
     - title: "Takami's Blog"
       url: https://lar.moe
       description: "Hana to Uta"
-      avatar: https://lar.moe/_next/image?url=https%3A%2F%2Fcdn.lar.moe%2Fstatic%2Favatar%2Fme.webp&w=640&q=75
+      avatar: https://cdn.lar.moe/static/avatar/me.webp
       screenshot: https://imgsrc.baidu.com/forum/pic/item/7aec54e736d12f2e86dc65a50ac2d5628435681e.jpg
       
     
@@ -51,7 +51,7 @@ my_friends:
 
     - title: "BLxcwg666 's Blog"
       url: https://blog.nekorua.com/
-      avatar: https://blog.nekorua.com/_next/image?url=https%3A%2F%2Fcos.nekorua.com%2Fimgs%2Favatar.webp&w=640&q=75
+      avatar: https://cos.nekorua.com/imgs/avatar.webp
       description: "BLxcwg666 的博客"
       screenshot: # 这里可以添加截图链接
 
