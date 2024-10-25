@@ -14,7 +14,7 @@ my_friends:
 
     - title: "资源管理器博客"
       url: https://www.zyglq.cn/
-      avatar: https://cos.zyglq.cn/static/web-logo.jpg
+      avatar: https://cos.zyglq.cn/static/web-logo.jpg?v=1111
       description: "心中有光，对立重伤"
       screenshot: https://imgsrc.baidu.com/forum/pic/item/203fb80e7bec54e7ecf34eddfc389b504ec26ad2.jpg
 
