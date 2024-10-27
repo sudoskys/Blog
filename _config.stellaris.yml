@@ -286,9 +286,10 @@ plugins:
   # 需在 Markdown 文件开头加入 mathjax: true
   # 推荐使用 Pandoc: npm uninstall hexo-renderer-marked --save & npm install hexo-renderer-pandoc --save
   mathjax:
-    enabled: false
+    enabled: true
     per_page: false # 启用后无需在文章开头加 mathjax: true 即可启用
     cdn: https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+
 
   # 使用 Katex 提供数学公式支持
   # https://katex.org/docs/autorender.html
@@ -305,8 +306,8 @@ plugins:
   copycode:
     enabled: true
     js: /js/plugins/copycode.js
-    default_text: '复制'
-    success_text: '已复制'
+    default_text: '抄走'
+    success_text: '已抄写'
 
 
 ######## 样式 ########
@@ -377,18 +378,20 @@ api_host:
 
 ######## 自定义插件 ########
 inject:
-  # script:
-  #   # 使用 HTML 语法
-  #   - '<script src="https://example.com/my_script.js" data-no-instant="true"></script>'
-  #   # data-no-instant 为 InstantClick 属性，决定某脚本在页面切换时是否重新加载
-  #   # 如果此脚本只需要加载一次（比如添加全局对象），那么为 true
-  #   # 如果此脚本每页都需要重复加载（比如编辑页面元素或需要使用 window.onload），那么为 false
+  script:
+    # 使用 HTML 语法
+    # - '<script src="https://example.com/my_script.js" data-no-instant="true"></script>'
+    - '<script src="/js/mathjax-config.js"  data-no-instant="true"></script>'
+    - '<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" data-no-instant="true"></script>'
+    # data-no-instant 为 InstantClick 属性，决定某脚本在页面切换时是否重新加载
+    # 如果此脚本只需要加载一次（比如添加全局对象），那么为 true
+    # 如果此脚本每页都需要重复加载（比如编辑页面元素或需要使用 window.onload），那么为 false
   # head:
-  #   # 使用 HTML 语法
-  #   - '<meta name="key" content="value"></meta>'
-  #   - '<link rel="stylesheet" href="/css/1.css"></link>'
-  # 由于 Stylus 的特性，暂不支持 inject CSS
-  # 如果要使用自定义 CSS，请在 _source/css 下创建 css 文件
-  # 之后使用上文的 head 来引入
+    # 使用 HTML 语法
+    # - '<meta name="key" content="value">'
+    # - '<link rel="stylesheet" href="/css/1.css">'
+    # 由于 Stylus 的特性，暂不支持 inject CSS
+    # 如果要使用自定义 CSS，请在 _source/css 下创建 css 文件
+    # 之后使用上文的 head 来引入
 
 
