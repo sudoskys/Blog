@@ -77,7 +77,7 @@ Cursor 虽然脱胎于 Vscode，但是由于 Cursor 适配了全局菜单栏，�
 
 我从 [https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=cursor-appimage](https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=cursor-appimage) 下载了 PKGBUILD 文件，并做了一些修改。这是 10/30 的最新版本，**如果在你的时间线已经修复了这个问题，请忽略。** 
 
-```shell
+```sh
 # Maintainer: Menghuan1918 <menghuan2003 at outlook dot com>
 # Contributor: TimeTrap <zhaoyuanpan at gmail dot com>
 # Contributor: Jingu <xiuluo dot android at gmail dot com>
@@ -146,7 +146,7 @@ cp /usr/share/applications/cursor-wayland.desktop ~/.local/share/applications/
 ```
 
 2. 编辑复制后的配置文件，添加必要的 Wayland 支持参数：
-```shell
+```sh
 [Desktop Entry]
 Name=Cursor (Wayland)
 Exec=/opt/appimages/cursor.AppImage --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland --disable-features=WaylandFractionalScaleV1 --enable-wayland-ime --no-sandbox %U
