@@ -26,6 +26,8 @@ tags: 算法
 
 ## 分治法解决最大子数组和问题
 
+下面我们着手解决 [LeetCode 53. 最大子数组和](https://leetcode.cn/problems/maximum-subarray/)。
+
 最大子数组和问题：给定一个整数数组，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。
 
 示例:
@@ -159,3 +161,9 @@ T(n) = 2(2T(n/4) + cn/2) + cn
 - 当前和小于0时，表明之前的子数组和会拖累后面的元素，应该重新开始
 - 当前和大于0时，即使很小，也可能在后续累加中变得更大
 - 通过不断更新最大和，我们能始终保持全局最优解
+
+
+## 参考资料
+
+- [算法通关手册](https://algo.itcharge.cn/09.Algorithm-Base/03.Divide-And-Conquer-Algorithm/01.Divide-And-Conquer-Algorithm/)
+- [Oi Wiki](https://oi-wiki.org/basic/divide-and-conquer/)
