@@ -2,13 +2,13 @@
 title: KDE 中 Vscode 和 Cursor 的显示优化
 date: 2024-10-30 12:00:00
 tags:
-    - KDE
-    - Arch Linux
-    - Vscode
+  - KDE
+  - Arch Linux
+  - Vscode
 cover: /img/my_vsc.png
 ---
 
-由于electron的 [历史遗留问题](https://github.com/electron/electron/issues/43721)，KDE 中 Vscode 的窗口无法正常显示，比如没有阴影，双标题栏什么的，非常不好看。所以可以用 hack 一点的方法来解决。
+由于 electron 的 [历史遗留问题](https://github.com/electron/electron/issues/43721)，KDE 中 Vscode 的窗口无法正常显示，比如没有阴影，双标题栏什么的，非常不好看。所以可以用 hack 一点的方法来解决。
 
 ## 配置调整
 
@@ -26,10 +26,10 @@ cover: /img/my_vsc.png
 
 ```json
 {
-    "window.titleBarStyle": "custom",
-    "window.autoDetectColorScheme": true,
-    "window.customTitleBarVisibility": "auto",
-    "window.zoomLevel": 0.4,
+  "window.titleBarStyle": "custom",
+  "window.autoDetectColorScheme": true,
+  "window.customTitleBarVisibility": "auto",
+  "window.zoomLevel": 0.4
 }
 ```
 
@@ -75,9 +75,9 @@ Cursor 虽然脱胎于 Vscode，但是由于 Cursor 适配了全局菜单栏，�
 
 利用一些 hack 的小技巧，可以去掉 Cursor 的双标题栏。[参考资料](https://github.com/getcursor/cursor/issues/837#issuecomment-2326443145)。
 
-我从 [https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=cursor-appimage](https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=cursor-appimage) 下载了 PKGBUILD 文件，并做了一些修改。这是 10/30 的最新版本，**如果在你的时间线已经修复了这个问题，请忽略。** 
+我从 [https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=cursor-appimage](https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=cursor-appimage) 下载了 PKGBUILD 文件，并做了一些修改。这是 10/30 的最新版本，**如果在你的时间线已经修复了这个问题，请忽略。**
 
-```sh
+```bash
 # Maintainer: Menghuan1918 <menghuan2003 at outlook dot com>
 # Contributor: TimeTrap <zhaoyuanpan at gmail dot com>
 # Contributor: Jingu <xiuluo dot android at gmail dot com>
@@ -101,52 +101,53 @@ sha256sums=('SKIP')  // 我不知道
 _install_path="/opt/appimages"
 
 prepare() {
-	chmod a+x "${_pkgname}-${pkgver}.AppImage"
-	"./${_pkgname}-${pkgver}.AppImage" --appimage-extract >/dev/null
+ chmod a+x "${_pkgname}-${pkgver}.AppImage"
+ "./${_pkgname}-${pkgver}.AppImage" --appimage-extract >/dev/null
 
-	# Apply the fix by replacing all occurrences of ",minHeight" with ",frame:false,minHeight"
+ # Apply the fix by replacing all occurrences of ",minHeight" with ",frame:false,minHeight"
     local target_file="${srcdir}/squashfs-root/resources/app/out/vs/code/electron-main/main.js"
     sed -i 's/,minHeight/,frame:false,minHeight/g' "$target_file"
 
-	# Modify the original desktop file
-	sed 's/AppRun/\/opt\/appimages\/Cursor.AppImage/g' -i "${srcdir}/squashfs-root/cursor.desktop"
-	sed 's/Exec=\/opt\/appimages\/Cursor.AppImage/Exec=\/opt\/appimages\/cursor.AppImage/g' -i "${srcdir}/squashfs-root/cursor.desktop"
-	sed 's/StartupWMClass=Cursor/StartupWMClass=cursor/g' -i "${srcdir}/squashfs-root/cursor.desktop"
+ # Modify the original desktop file
+ sed 's/AppRun/\/opt\/appimages\/Cursor.AppImage/g' -i "${srcdir}/squashfs-root/cursor.desktop"
+ sed 's/Exec=\/opt\/appimages\/Cursor.AppImage/Exec=\/opt\/appimages\/cursor.AppImage/g' -i "${srcdir}/squashfs-root/cursor.desktop"
+ sed 's/StartupWMClass=Cursor/StartupWMClass=cursor/g' -i "${srcdir}/squashfs-root/cursor.desktop"
 
-	# Create a copy of the desktop file for Wayland
-	cp "${srcdir}/squashfs-root/cursor.desktop" "${srcdir}/squashfs-root/cursor-wayland.desktop"
-	sed -i 's/^Name=Cursor/Name=Cursor (Wayland)/' "${srcdir}/squashfs-root/cursor-wayland.desktop"
-	sed -i 's|Exec=/opt/appimages/cursor.AppImage|Exec=/opt/appimages/cursor.AppImage --enable-features=UseOzonePlatform --enable-features=WaylandWindowDecorations --ozone-platform=wayland --disable-features=WaylandFractionalScaleV1|' "${srcdir}/squashfs-root/cursor-wayland.desktop"
+ # Create a copy of the desktop file for Wayland
+ cp "${srcdir}/squashfs-root/cursor.desktop" "${srcdir}/squashfs-root/cursor-wayland.desktop"
+ sed -i 's/^Name=Cursor/Name=Cursor (Wayland)/' "${srcdir}/squashfs-root/cursor-wayland.desktop"
+ sed -i 's|Exec=/opt/appimages/cursor.AppImage|Exec=/opt/appimages/cursor.AppImage --enable-features=UseOzonePlatform --enable-features=WaylandWindowDecorations --ozone-platform=wayland --disable-features=WaylandFractionalScaleV1|' "${srcdir}/squashfs-root/cursor-wayland.desktop"
 }
 
 package() {
-	install -Dm755 "${srcdir}/${_pkgname}-${pkgver}.AppImage" "${pkgdir}/${_install_path}/${_pkgname}.AppImage"
+ install -Dm755 "${srcdir}/${_pkgname}-${pkgver}.AppImage" "${pkgdir}/${_install_path}/${_pkgname}.AppImage"
 
-	# Install icons
-	for _icons in 32x32 64x64 128x128 256x256 512x512; do
-		install -Dm645 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/cursor.png" "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/cursor.png"
-	done
+ # Install icons
+ for _icons in 32x32 64x64 128x128 256x256 512x512; do
+  install -Dm645 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/cursor.png" "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/cursor.png"
+ done
 
-	# Install the desktop files
-	install -Dm755 "${srcdir}/squashfs-root/cursor.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-	install -Dm755 "${srcdir}/squashfs-root/cursor-wayland.desktop" "${pkgdir}/usr/share/applications/${_pkgname}-wayland.desktop"
+ # Install the desktop files
+ install -Dm755 "${srcdir}/squashfs-root/cursor.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+ install -Dm755 "${srcdir}/squashfs-root/cursor-wayland.desktop" "${pkgdir}/usr/share/applications/${_pkgname}-wayland.desktop"
 }
 ```
 
 使用 `makepkg -si` 安装即可。
-
 
 #### Cursor Wayland 下字体渲染模糊
 
 为了在 Wayland 下获得更好的显示效果，需要修改 Cursor 的启动配置。
 
 1. 首先从系统复制默认的桌面配置文件：
-```bash
+
+```shell
 cp /usr/share/applications/cursor-wayland.desktop ~/.local/share/applications/
 ```
 
 2. 编辑复制后的配置文件，添加必要的 Wayland 支持参数：
-```sh
+
+```bash
 [Desktop Entry]
 Name=Cursor (Wayland)
 Exec=/opt/appimages/cursor.AppImage --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland --disable-features=WaylandFractionalScaleV1 --enable-wayland-ime --no-sandbox %U
@@ -156,6 +157,7 @@ Categories=Development;IDE;
 ```
 
 这些参数的作用：
+
 - `UseOzonePlatform` 和 `WaylandWindowDecorations`：启用 Wayland 原生窗口装饰
 - `ozone-platform=wayland`：使用 Wayland 显示后端
 - `disable-features=WaylandFractionalScaleV1`：修复高分屏缩放问题

@@ -12,7 +12,7 @@ tags: Arch Linux
 
 准备一个 Live CD，启动进入 Live CD。插上手机打开数据线网络共享。如果没有手机，可以用如下方法连接 WiFi。
 
-```bash
+```shell
 iwctl # 进入交互式命令行
 device list # 列出无线网卡设备名，比如无线网卡叫 wlan0
 station wlan0 scan # 扫描网络
@@ -23,13 +23,13 @@ exit # 连接成功后退出
 
 如果你的手机只有 CN 网络，请删除镜像列表：
 
-```bash
+```shell
 rm /etc/pacman.d/mirrorlist
 ```
 
 然后添加中科大镜像源：
 
-```bash
+```shell
 echo "Server = https://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch" > /etc/pacman.d/mirrorlist
 ```
 
@@ -39,7 +39,7 @@ echo "Server = https://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch" > /etc/pacm
 
 将对应的硬盘分区挂载到 `/mnt` 目录。每台机器的硬盘分区都不一样，我的硬盘是 btrfs 文件系统，所以挂载如下：
 
-```bash
+```shell
 mount -t btrfs -o subvol=/@,compress=zstd /dev/nvme0n1p3 /mnt # 挂载 / 目录
 mount -t btrfs -o subvol=/@home,compress=zstd /dev/nvme0n1p3 /mnt/home # 挂载 /home 目录
 mount /dev/nvme0n1p1 /mnt/boot # 挂载 /boot 目录
@@ -63,13 +63,13 @@ swapon /dev/nvme0n1p2 # 挂载交换分区
 
 如果是引导程序损坏，输入以下命令安装 GRUB 到 EFI 分区：
 
-```bash
+```shell
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=ARCH
 ```
 
 为了引导 Windows 10，还需要添加新的一行：
 
-```bash
+```shell
 vim /etc/default/grub
 ```
 
@@ -83,11 +83,11 @@ vim /etc/default/grub
 
 如果遇到以下错误：
 
-```bash
+```shell
 ldconfig: File /usr/lib/libxxx.so.1.0.2 is empty, not checked.
 ```
 
-```bash
+```shell
 pacman: error when loading shared libraries: /usr/lib/libbz2.so.1.0 file too short
 ```
 
@@ -97,7 +97,7 @@ pacman: error when loading shared libraries: /usr/lib/libbz2.so.1.0 file too sho
 
 然后输入以下命令挂载目录：
 
-```bash
+```shell
 mount -t proc proc /mnt/proc
 mount -t sysfs sysfs /mnt/sys
 mount -t dev dev /mnt/dev
@@ -105,14 +105,14 @@ mount -t dev dev /mnt/dev
 
 输入以下命令重新安装系统中的所有软件包：
 
-```bash
+```shell
 pacman --root /mnt -Qnq | pacman --cachedir=/mnt/var/cache/pacman/pkg --root /mnt -S --dbonly -
 pacman --root /mnt -Qnq | pacman --cachedir=/mnt/var/cache/pacman/pkg --root /mnt -S -
 ```
 
 或者：
 
-```bash
+```shell
 pacman --sysroot /mnt -Syyu $(pacman --sysroot /mnt -Qnq) --overwrite '*'
 ```
 
@@ -125,13 +125,13 @@ pacman --sysroot /mnt -Syyu $(pacman --sysroot /mnt -Qnq) --overwrite '*'
 
 然后进入 chroot 环境：
 
-```bash
+```shell
 arch-chroot /mnt
 ```
 
 再次尝试更新：
 
-```bash
+```shell
 pacman -Syy
 pacman -S archlinux-keyring
 pacman -Su
@@ -141,7 +141,7 @@ pacman -Su
 
 如果遇到以下错误：
 
-```bash
+```shell
 error: key "XXXX" could not be looked up remotely
 error: required key missing from keyring
 error: failed to commit transaction (unexpected error)
@@ -156,13 +156,13 @@ gnupg/pubring.gpg
 
 首先需要进入 chroot 环境：
 
-```bash
+```shell
 arch-chroot /mnt
 ```
 
 然后输入以下命令：
 
-```bash
+```shell
 pacman -Sy archlinux-keyring
 pacman-key --init
 mv /etc/pacman.d/gnupg /etc/pacman.d/gnupg.bak # 如果 init 失败，可以执行这行
@@ -172,7 +172,7 @@ pacman-key --refresh-keys
 
 如果你在 Live CD 下遇到密钥问题，请输入以下命令：
 
-```bash
+```shell
 pacman -S archlinux-keyring
 pacman-key --init
 pacman-key --populate
@@ -182,7 +182,7 @@ pacman-key --populate
 
 ### 完成
 
-```bash
+```shell
 exit # 退回安装环境
 umount -R /mnt # 卸载新分区
 reboot # 重启
