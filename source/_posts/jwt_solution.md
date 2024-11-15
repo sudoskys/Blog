@@ -76,7 +76,7 @@ HMAC 的好处就是可以方便管理密钥，方便授权。而且可以通过
 
 不过问题又一次出现：HMAC 并没有统一的**实现标准**，而且 HMAC 似乎并不方便用于用户认证，因为 HMAC 本质上更适合授权。
 
-### 浏览器的进步
+## 浏览器的进步
 
 浏览器也是一种客户端，它运行网页需要一种通用的和服务器交换数据的方式，**由于早期浏览器并没有现代存储 API**，所以 Cookie 就被发明出来存储数据，给每个网站一个交换数据的通道。
 
@@ -86,7 +86,7 @@ Cookie 曾一度用于客户端数据的存储，当时并没有其他合适的�
 
 **所以 Cookie 其实和认证没有直接关系，它只是一种存储机制。**
 
-#### 基于 Cookie 发明了 Session
+### 基于 Cookie 发明了 Session
 
 Cookie 只是一个存储机制，浏览器在每次请求时都会带上这个文本，而且服务器可以通过设置 Cookie。Cookie 有很多属性，比如 `Domain`、`Path`、`Expires`、`HttpOnly`、`Secure` 等。
 
@@ -128,7 +128,7 @@ SAML 的核心思想是：用户登录后，身份提供者(IdP)给用户签发�
 
 不用 XML 肯定是要用 JSON，所以 Json Web Token 就出现了。用 Json 来做令牌，对移动互联网比较友好，传输也方便。
 
-### JWT(JSON Web Token) 的出现
+## JWT(JSON Web Token) 的出现
 
 它可能是目前最流行的身份验证和授权解决方案。
 
@@ -157,7 +157,7 @@ HMACSHA256(
 )
 ```
 
-#### Payload 的结构
+### Payload 的结构
 
 Payload 是 JWT 的第二部分，它包含了一些声明（Claim），Claim 是关于实体（通常是用户）和其他数据的声明。Claim 有三种类型：
 
@@ -176,7 +176,7 @@ Payload 是 JWT 的第二部分，它包含了一些声明（Claim），Claim �
 
 **由于 payload 是 base64 编码的，所以不要在 payload 中存储敏感信息。**
 
-#### Signature 的生成
+### Signature 的生成
 
 为了确保信息不被篡改，JWT 还需要一个签名。签名是由 Header 和 Payload 以及一个密钥生成的。
 
@@ -192,7 +192,7 @@ HMACSHA256(
 
 不过有的小朋友可能就要问了，JWT 和 普通的下发 Token 有什么区别呢？
 
-#### JWT 的特殊之处
+### JWT 的特殊之处
 
 首先我们要明确一个概念：Token 是一种通用的概念，它可以是任何形式的凭证，比如 JWT、OAuth 的 Access Token、Session ID 等，JWT 就是一种特定的 Token，它是一种开放标准，定义了一种简洁的、自包含的方法，用于在各方之间传递信息。所以 JWT 是 Token 的一种，而 Token 不一定是 JWT。
 
@@ -217,7 +217,7 @@ JWT 的优势在于它是**自包含**的，它包含了用户的信息，所以
 
 而且 JWT 自带了过期时间，进一步增加了安全性。
 
-#### JWT 和 Cookie 的关系
+### JWT 和 Cookie 的关系
 
 JWT 是服务器签发给客户端的字符串，客户端在每次请求时都在请求头带上 JWT。但是客户端存储在哪里其实是没有限制的，JWT 可以存储在 Cookie、LocalStorage、SessionStorage 等地方。
 
@@ -227,7 +227,7 @@ JWT 可以存储在 Cookie 中（一般不这样做），也可以存储在 Loca
 
 不过因为 Cookie 有长度限制和安全问题（浏览器自动在普通请求中带上 Cookie，如果网站有漏洞，凭证就会被窃取），所以我们一般不把 JWT 存储在 Cookie 中，而是存储在 LocalStorage 或 SessionStorage 中。
 
-#### JWT 使用
+### JWT 使用
 
 客户端请求时在 `Authorization` 头中加入 `Bearer {jwt}` 字段，值为 JWT。
 
@@ -252,7 +252,7 @@ jwt.verify(token, 'secret', (err, decoded) => {
 
 JWT 无法销毁，只能等待过期，但是可以加入黑名单，这样就可以实现过期功能。
 
-#### 延续登录状态
+### 延续登录状态
 
 你可以在每次请求时，请求接口检查JWT是不是快过期了，如果快过期了，就重新签发一个JWT，然后返回给客户端。
 
