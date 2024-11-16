@@ -221,9 +221,7 @@ JWT 的优势在于它是**自包含**的，它包含了用户的信息，所以
 
 JWT 是服务器签发给客户端的字符串，客户端在每次请求时都在请求头带上 JWT。但是客户端存储在哪里其实是没有限制的，JWT 可以存储在 Cookie、LocalStorage、SessionStorage 等地方。
 
-存储在客户端的叫做 Cookie，存储在服务器端的叫做 Session。
-
-JWT 可以存储在 Cookie 中（一般不这样做），也可以存储在 LocalStorage 或 SessionStorage 中。
+JWT 可以存储在 Cookie 中（一般不这样做），也可以存储在 LocalStorage 或 [SessionStorage](https://zh.javascript.info/localstorage) 中。
 
 不过因为 Cookie 有长度限制和安全问题（浏览器自动在普通请求中带上 Cookie，如果网站有漏洞，凭证就会被窃取），所以我们一般不把 JWT 存储在 Cookie 中，而是存储在 LocalStorage 或 SessionStorage 中。
 
