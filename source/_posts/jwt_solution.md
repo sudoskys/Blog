@@ -145,8 +145,8 @@ JWT 本质上是一个字符串，它由三部分组成，分别是 Header、Pay
 }
 // Payload
 {
-  "sub": "1234567890",
-  "name": "John Doe",
+  "sub": "dianas.cyou",
+  "name": "sudoskys",
   "iat": 1516239022
 }
 // Signature
@@ -167,8 +167,8 @@ Payload 是 JWT 的第二部分，它包含了一些声明（Claim），Claim �
 
 ```json5
 {
-  "sub": "1234567890", // Subject
-  "name": "John Doe",
+  "sub": "dianas.cyou", // Subject
+  "name": "github@sudoskys",
   "admin": true,
   "iat": 1516239022 // Issued At
 }
