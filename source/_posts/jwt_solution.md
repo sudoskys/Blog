@@ -232,6 +232,7 @@ JWT 可以存储在 Cookie 中（一般不这样做），也可以存储在 Loca
 服务器根据 JWT 的过期时间和签名和密钥验证请求。
 
 ```typescript
+// author:github@sudoskys
 const jwt = require('jsonwebtoken');
 
 // 验证 JWT
@@ -263,3 +264,4 @@ JWT 无法销毁，只能等待过期，但是可以加入黑名单，这样就�
 刷新令牌可能看起来是不必要的机制，因为当被中间人截获时，刷新令牌也会被截获。
 
 主要就是防止某些意外情况下（比如使用了不规范的库，把你的 JWT 乱扔），你的 JWT 通过 Cookie 泄漏到网上造成大量损失。
+
