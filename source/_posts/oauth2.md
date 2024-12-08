@@ -3,6 +3,7 @@ title: Web 开发中的 OAUTH 实现
 date: 2024-11-16 12:00:00
 tags:
   - Web
+mermaid: true
 ---
 
 建议先读完 JWT 的文章，再来看这篇文章。
@@ -56,6 +57,8 @@ sequenceDiagram
     SP->>SP: 验证 SAML Response 和数字签名
     SP->>User: 授权通过，提供访问资源
 ```
+
+SAML 是一种基于 XML 的标准，用于在身份提供者和服务提供者之间交换身份和授权信息。
 
 ### Oauth 2.0
 
