@@ -25,7 +25,6 @@
     "hexo-related-popular-posts": "^5.0.1",
     "hexo-renderer-jsx": "^1.0.1",
     "hexo-renderer-markdown-it-plus": "^1.0.6",
-    "hexo-renderer-pandoc": "^0.4.0",
     "hexo-renderer-stylus": "^3.0.0",
     "hexo-server": "^3.0.0",
     "hexo-util": "3.3.0",
