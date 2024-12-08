@@ -1,5 +1,5 @@
 stellar:
-  version: '2.1.0'
+  version: "2.1.0"
   # homepage: 'https://blog.chyk.ink/wiki/stellaris/'
   # repo: 'https://github.com/chiyuki0325/hexo-theme-stellaris'
 
@@ -13,15 +13,15 @@ sidebar:
   logo:
     # 请在 Hexo 的 _config.yml 中设置头像链接
     # 或使用 Markdown 语法自定义（如 '[https://xxx.png](/about/)'）
-    avatar: '[https://avatars.githubusercontent.com/u/75739606](/about/)'
+    avatar: "[https://avatars.githubusercontent.com/u/75739606](/about/)"
     # 可以使用 Markdown 语法自定义，支持 HTML 标签
     #（如 '[<img no-lazy height="32px" src="xxx"/>](/)'）
-    title: '[config.title](/)'
+    title: "[config.title](/)"
   menu:
-    post: '[最新](/)'
-    archives: '[文章](/archives/)'
-    links: '[友链](/links/)'
-  
+    post: "[最新](/)"
+    archives: "[文章](/archives/)"
+    links: "[友链](/links/)"
+
   widgets:
     #### 自动生成的页面 ####
     # 主页
@@ -36,26 +36,24 @@ sidebar:
     # 其它 layout:page 的页面
     page: toc, search # for custom pages using 'layout:page'
 
-
 breadcrumb:
   # 面包屑导航栏中最左侧内容
-  home: home  # config.title / config.author / home 或自定义内容
-
+  home: home # config.title / config.author / home 或自定义内容
 
 ######## 博客文章 ########
 article:
   # 如果没有指定封面，是否根据 tags 作为关键词搜索封面图片？
-  auto_cover: false  # 从 https://source.unsplash.com/ 中自动搜索封面
+  auto_cover: false # 从 https://source.unsplash.com/ 中自动搜索封面
   # 如果没有指定横幅，是否根据 tags 作为关键词搜索横幅图片？
-  auto_banner: false  # 从 https://source.unsplash.com/ 中自动搜索封面
+  auto_banner: false # 从 https://source.unsplash.com/ 中自动搜索封面
   # 如果没有指定 excerpt 和 description，将自动取多长的内容作为文章摘要？
   auto_excerpt: 150
   # 分类
   category_color:
     # 分类名: 分类颜色色号
-    '新闻稿': '#DA0F47'
+    "新闻稿": "#DA0F47"
   # 文章许可协议
-  license: '本文采用[署名-非商业性使用-相同方式共享 4.0 国际](https://creativecommons.org/licenses/by-nc-sa/4.0/) 许可协议，转载请注明出处。'
+  license: "本文采用[署名-非商业性使用-相同方式共享 4.0 国际](https://creativecommons.org/licenses/by-nc-sa/4.0/) 许可协议，转载请注明出处。"
   # 分享
   share: [wechat, weibo, telegram, email, link]
   related_posts:
@@ -75,8 +73,7 @@ search:
   local_search:
     # 如果你使用 CDN，可以上传 /js/search/local_search.js 并在此输入对应的链接
     js: /js/search/local_search.js
-    path: /search.json  # 搜索索引文件存放位置
-
+    path: /search.json # 搜索索引文件存放位置
 
 ######## 评论 ########
 comments:
@@ -97,8 +94,8 @@ footer:
   social:
     ### 社交平台链接按钮（使用 HTML 语法）
     github:
-       icon: '<img no-lazy width="24" height="24" src="https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.3/social/08a41b181ce68.svg"/>'
-       url: 'https://github.com/sudoskys'
+      icon: '<img no-lazy width="24" height="24" src="https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.3/social/08a41b181ce68.svg"/>'
+      url: "https://github.com/sudoskys"
     # music:
     #   icon: '<img width="24" height="24" src="https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.3/social/3845874.svg"/>'
     #   url: /
@@ -110,38 +107,37 @@ footer:
       light: '<img no-lazy width="24" height="24" src="https://ydz-cos.zyglq.cn/blog-static/images/sun-fill.svg"/>'
       dark: '<img no-lazy width="24" height="24" src="https://ydz-cos.zyglq.cn/blog-static/images/moon-fill.svg"/>'
   sitemap:
-    '博客':
-       - '[💡 近期发布](/)'
-       - '[📜 历史文章](/archives)'
-       - '[📊 标签](/tags)'
-       - '[🔗 友情链接](/links)'
-       - '[🐱 关于我](/about)'
-    '社交':
-       - '[🐱 GitHub](https://github.com/sudoskys)'
-    '其它':
-       - '[📈 状态监控](https://status.dianas.cyou/)'
-    '项目':
-       - '[🔧 Telegramify Markdown](https://github.com/sudoskys/telegramify-markdown)'
-       - '[🎨 NovelAI Python Lib](https://github.com/LlmKira/novelai-python)'
-       - '[🌐 Fast Langdetect](https://github.com/LlmKira/fast-langdetect)'
-       - '[🤖 Openai Chat Bot](https://github.com/LlmKira/Openaibot)'
-       - '[🐱 Kitan AntiAd Bot](https://github.com/TelechaBot/Kitan)'
-       - '[🖼️ Telegram Sticker CLI](https://github.com/sudoskys/tsticker)'
-       - '[🛠️ Telegram Sticker Utils](https://github.com/sudoskys/telegram-sticker-utils)'
-  license: '[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)'
+    "博客":
+      - "[💡 近期发布](/)"
+      - "[📜 历史文章](/archives)"
+      - "[📊 标签](/tags)"
+      - "[🔗 友情链接](/links)"
+      - "[🐱 关于我](/about)"
+    "社交":
+      - "[🐱 GitHub](https://github.com/sudoskys)"
+    "其它":
+      - "[📈 状态监控](https://status.dianas.cyou/)"
+    "项目":
+      - "[🔧 Telegramify Markdown](https://github.com/sudoskys/telegramify-markdown)"
+      - "[🎨 NovelAI Python Lib](https://github.com/LlmKira/novelai-python)"
+      - "[🌐 Fast Langdetect](https://github.com/LlmKira/fast-langdetect)"
+      - "[🤖 Openai Chat Bot](https://github.com/LlmKira/Openaibot)"
+      - "[🐱 Kitan AntiAd Bot](https://github.com/TelechaBot/Kitan)"
+      - "[🖼️ Telegram Sticker CLI](https://github.com/sudoskys/tsticker)"
+      - "[🛠️ Telegram Sticker Utils](https://github.com/sudoskys/telegram-sticker-utils)"
+  license: "[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)"
   # source: https://github.com/chiyuki0325/blog  # 博客源码信息
-  icp:  '未ICP备: 没有备案信息' # ICP 备案信息
-
+  icp: "未ICP备: 没有备案信息" # ICP 备案信息
 
 ######## 标签插件 ########
 tag_plugins:
   # {% note text %}
   note:
-    default_color: ''  # light, dark, red, orange, yellow, green, cyan, blue, purple, warning, error
+    default_color: "" # light, dark, red, orange, yellow, green, cyan, blue, purple, warning, error
 
   # {% checkbox %}
   checkbox:
-    interactive: false  # 用户是否可切换勾选
+    interactive: false # 用户是否可切换勾选
 
   # {% quot %}
   quot:
@@ -217,16 +213,16 @@ tag_plugins:
   link:
     siteinfo_api: https://stellaris-site-info.chyk.ink/api/v1/?url=${href}
 
-
 ######## JS 插件 ########
 plugins:
   ### 在头息中写入 dns-prefetch 和 preconnect 以加快加载
-  prefetch_and_preconnect: [ "https://fastly.jsdelivr.net" ]
+  prefetch_and_preconnect: ["https://fastly.jsdelivr.net"]
 
   ### 必须加载的核心 JS
   jquery: https://fastly.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js
   # marked: https://fastly.jsdelivr.net/npm/marked@4.0.2/marked.min.js
-  marked: https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/marked/4.0.2/marked.min.js
+  # marked: https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/marked/4.0.2/marked.min.js
+
   instant_click:
     # js: https://fastly.jsdelivr.net/npm/instantclick@3.1.0/instantclick.min.js
     js: https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/instantclick/3.1.0/instantclick.min.js
@@ -246,7 +242,7 @@ plugins:
   # 图片懒加载
   # https://www.npmjs.com/package/vanilla-lazyload
   lazyload:
-    enabled: true  # [hexo clean && hexo s] is required after changing this value.
+    enabled: true # [hexo clean && hexo s] is required after changing this value.
     # js: https://fastly.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js
     js: https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/vanilla-lazyload/17.3.1/lazyload.min.js
     transition: blur # blur, fade
@@ -258,9 +254,9 @@ plugins:
     # js: https://fastly.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js
     js: https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/scrollReveal.js/4.0.9/scrollreveal.min.js
     distance: 8px
-    duration: 500  # ms
-    interval: 100  # ms
-    scale: 1  # 0.1~1
+    duration: 500 # ms
+    interval: 100 # ms
+    scale: 1 # 0.1~1
 
   # 使用 Fancybox 提供 **{% image %} 图片标签插件** 的点击放大视图
   # 注：**可能并不支持原生 Markdown 图片语法！**
@@ -286,17 +282,17 @@ plugins:
   # 需在 Markdown 文件开头加入 mathjax: true
   # 推荐使用 Pandoc: npm uninstall hexo-renderer-marked --save & npm install hexo-renderer-pandoc --save
   mathjax:
-    enabled: true
-    per_page: true # 启用后无需在文章开头加 mathjax: true 即可启用
-    cdn: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
-
+    enabled: false
+    per_page: false # 启用后无需在文章开头加 mathjax: true 即可启用
+    js: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js # 请使用 3.x 以上版本的 mathjax
+    
   # 使用 Katex 提供数学公式支持
   # 使用 hexo-renderer-markdown-it-plus 在服务端进行渲染 Katex 公式
   # 需要先卸载原本的渲染器，安装 hexo-renderer-markdown-it-plus 作为新的渲染器
   # npm uninstall hexo-renderer-marked --save
   # npm install hexo-renderer-markdown-it-plus --save
   katex:
-    enabled: false
+    enabled: true
     css: https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css
 
   # Mermaid - markdwon to flow chart, seq chart, class chart ...
@@ -316,14 +312,13 @@ plugins:
     # Available themes: default | dark | forest | neutral
     # 如果不填写将遵循博客颜色主题
     # theme: neutral
-  
+
   # 代码块复制按钮
   copycode:
     enabled: true
     js: /js/plugins/copycode.js
-    default_text: '抄走'
-    success_text: '已抄写'
-
+    default_text: "抄走"
+    success_text: "已抄写"
 
 ######## 样式 ########
 style:
@@ -331,34 +326,34 @@ style:
   smooth_scroll: true # true / false
   font-size:
     root: 16px
-    body: .9375rem  # 15px
-    code: 85%  # 14px
+    body: .9375rem # 15px
+    code: 85% # 14px
     codeblock: 0.8125rem # 13px
   text-align: left
   color:
     common:
-      accent: '#6264A7' # 强调色（中紫色，Fluent UI 紫色）
-      button: '#8B8CC7' # 按钮颜色（稍浅的紫色）
-      hover: '#464775' # 按钮高亮颜色（深紫色）
+      accent: "#6264A7" # 强调色（中紫色，Fluent UI 紫色）
+      button: "#8B8CC7" # 按钮颜色（稍浅的紫色）
+      hover: "#464775" # 按钮高亮颜色（深紫色）
     light:
-      theme: '#6264A7' # 主题色（Fluent UI 紫色）
-      mix: '#F3F2F1' # 浅色背景颜色（Fluent UI 浅灰色）
-      block: '#E1DFDD' # 块背景颜色（Fluent UI 更浅的灰色）
-      card: '#FFFFFF' # 卡片背景颜色（白色）
-      title: '#323130' # 标题文本颜色（Fluent UI 深灰色）
-      text: '#201F1E' # 正文文本颜色（Fluent UI 更深的灰色，接近黑色）
-      code: '#6264A7' # 行内代码颜色（主题紫色）
-      background: '#FAF9F8 radial-gradient(#F3F2F1 75%, #FAF9F8 100%) no-repeat fixed' # 网站背景颜色
+      theme: "#6264A7" # 主题色（Fluent UI 紫色）
+      mix: "#F3F2F1" # 浅色背景颜色（Fluent UI 浅灰色）
+      block: "#E1DFDD" # 块背景颜色（Fluent UI 更浅的灰色）
+      card: "#FFFFFF" # 卡片背景颜色（白色）
+      title: "#323130" # 标题文本颜色（Fluent UI 深灰色）
+      text: "#201F1E" # 正文文本颜色（Fluent UI 更深的灰色，接近黑色）
+      code: "#6264A7" # 行内代码颜色（主题紫色）
+      background: "#FAF9F8 radial-gradient(#F3F2F1 75%, #FAF9F8 100%) no-repeat fixed" # 网站背景颜色
     dark:
-      theme: '#6264A7' # 主题色（Fluent UI 紫色）
-      mix: '#292827' # 深色背景颜色（Fluent UI 深灰色）
-      background-mobile: '#201F1E' # 移动端深色背景（Fluent UI 更深的灰色）
-      block: '#3B3A39' # 块背景颜色（Fluent UI 深灰色）
-      card: '#323130' # 卡片背景颜色（Fluent UI 深灰色）
-      title: '#FFFFFF' # 标题文本颜色（白色）
-      text: '#F3F2F1' # 正文文本颜色（Fluent UI 浅灰色，接近白色）
-      code: '#B4A0FF' # 行内代码颜色（浅紫色）
-      background: '#201F1E radial-gradient(#292827 25%, #201F1E 100%) no-repeat fixed' # 网站背景颜色
+      theme: "#6264A7" # 主题色（Fluent UI 紫色）
+      mix: "#292827" # 深色背景颜色（Fluent UI 深灰色）
+      background-mobile: "#201F1E" # 移动端深色背景（Fluent UI 更深的灰色）
+      block: "#3B3A39" # 块背景颜色（Fluent UI 深灰色）
+      card: "#323130" # 卡片背景颜色（Fluent UI 深灰色）
+      title: "#FFFFFF" # 标题文本颜色（白色）
+      text: "#F3F2F1" # 正文文本颜色（Fluent UI 浅灰色，接近白色）
+      code: "#B4A0FF" # 行内代码颜色（浅紫色）
+      background: "#201F1E radial-gradient(#292827 25%, #201F1E 100%) no-repeat fixed" # 网站背景颜色
   animated_avatar:
     animate: auto # auto, always
     background: https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.2/avatar/round/rainbow64@3x.webp
@@ -366,15 +361,14 @@ style:
     scrollbar: 4px
     highlightjs_theme: https://fastly.jsdelivr.net/gh/highlightjs/cdn-release@11.5.0/build/styles/atom-one-dark.min.css
   font-family:
-    logo: 'LXGW WenKai Screen, system-ui, -apple-system, sans-serif'
-    body: 'Segoe UI, system-ui, -apple-system, sans-serif'
+    logo: "LXGW WenKai Screen, system-ui, -apple-system, sans-serif"
+    body: "Segoe UI, system-ui, -apple-system, sans-serif"
     code: 'Menlo, Monaco, Consolas, system-ui, "Courier New", monospace, sans-serif'
     codeblock: 'Menlo, Monaco, Consolas, system-ui, "Courier New", monospace, sans-serif'
   custom_font_css:
     # 自定义字体
     enabled: true
     css: "https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-web/style.css"
-
 
 ######## 缺省资源文件 ########
 default:
@@ -383,30 +377,26 @@ default:
   cover: https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/cover/76b86c0226ffd.svg
   image: https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg
 
-
 ######## API ########
 api_host:
   ghapi: https://api.github.com
   ghraw: https://raw.githubusercontent.com
   gist: https://gist.github.com
 
-
 ######## 自定义插件 ########
 inject:
   script:
     # 使用 HTML 语法
     # - '<script src="https://example.com/my_script.js" data-no-instant="true"></script>'
-    # - '<script src="/js/mathjax-config.js"  data-no-instant="true"></script>'
-    # - '<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" data-no-instant="true"></script>'
+    # - '<script src="/js/mathjax-config.js"  data-no-instant="false"></script>'
+    # - '<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js" data-no-instant="true"></script>'
     # data-no-instant 为 InstantClick 属性，决定某脚本在页面切换时是否重新加载
     # 如果此脚本只需要加载一次（比如添加全局对象），那么为 true
     # 如果此脚本每页都需要重复加载（比如编辑页面元素或需要使用 window.onload），那么为 false
   # head:
-    # 使用 HTML 语法
-    # - '<meta name="key" content="value">'
-    # - '<link rel="stylesheet" href="/css/1.css">'
-    # 由于 Stylus 的特性，暂不支持 inject CSS
-    # 如果要使用自定义 CSS，请在 _source/css 下创建 css 文件
-    # 之后使用上文的 head 来引入
-
-
+  # 使用 HTML 语法
+  # - '<meta name="key" content="value">'
+  # - '<link rel="stylesheet" href="/css/1.css">'
+  # 由于 Stylus 的特性，暂不支持 inject CSS
+  # 如果要使用自定义 CSS，请在 _source/css 下创建 css 文件
+  # 之后使用上文的 head 来引入
