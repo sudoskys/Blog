@@ -194,28 +194,25 @@ HMACSHA256(
 
 ### JWT 的特殊之处
 
-首先我们要明确一个概念：Token 是一种通用的概念，它可以是任何形式的凭证，比如 JWT、OAuth 的 Access Token、Session ID 等，JWT 就是一种特定的 Token，它是一种开放标准，定义了一种简洁的、自包含的方法，用于在各方之间传递信息。所以 JWT 是 Token 的一种，而 Token 不一定是 JWT。
+>Token 是一种通用的概念，它可以是任何形式的凭证，比如 JWT、OAuth 的 Access Token、Session ID 等，JWT 就是一种特定的 Token，它是一种开放标准，定义了一种简洁的、自包含的方法，用于在各方之间传递信息。所以 JWT 是 Token 的一种，而 Token 不一定是 JWT。
 
 JWT 的优势在于它是**自包含**的，它包含了用户的信息，所以服务器不需要保存用户的登录状态，这样就可以实现无状态的认证。
 
-这个设计非常聪明，什么是无状态的认证呢？
+什么是无状态的认证呢？
 
-无状态的认证是指服务器不保存用户的登录状态，每次请求都是独立的，服务器不需要保存用户的登录状态，只需要验证 JWT 的有效性即可。
+无状态的认证是指服务器不需要保存用户的登录状态，只需要验证 JWT 的有效性即可。
 
-我们的 Header 和 Payload（Payload 不能放敏感信息哦） 都是 **BASE64编码** 的，Signature 是用 HMACSHA256 算法不可逆加密的。
+JWT 的 Header 和 Payload都是 **BASE64明文编码** 的，Signature 是用 HMACSHA256 算法不可逆加密的，所以如果签名匹配，那就证明这个JWT是拥有密钥的服务器签发的，是可信的。
 
-所以如果服务器知道 JWT 签名加密的密钥，就可以验证 JWT 是否是自己签发的，如果签名匹配，那就证明这个请求是拥有密钥的服务器签发的。
+>只要有了 JWT 相当于拿到账户权限，虽然编码是明文的，但是也是用户凭据，不可以公开到网上，JWT 本身就是用户的凭证。
 
-而服务器不会签发非法的 JWT，所以 JWT 内的用户信息就是这个请求的用户信息。
-
->只要有了 jwt 相当于拿到账户权限，虽然编码是明文的，但是也是用户凭据，不可以公开到网上，JWT 本身就是用户的凭证。
-> JWT 签发出来不可以被销毁，只能等待过期，因为 JWT 是无状态的，服务器不能控制用户的登录状态。不过可以把 JWT 加入黑名单，这样就可以实现过期功能。
-
-而普通 Token 在服务器每次处理请求时都需要查询数据库，判断 Token 是否有效，而 JWT 只需要解码 JWT 即可。
-
-如果我们有很多服务器，那么验证普通 Token 需要在每台服务器上查询数据库，而 JWT 只需要知道签发时的密钥进行比对即可。
+如果我们有很多服务器，那么验证普通 Token 需要在所有服务器查询同一数据库，而 JWT 只需要知道签发时的密钥进行比对即可。
 
 而且 JWT 自带了过期时间，进一步增加了安全性。
+
+#### 黑名单
+
+JWT 签发出来不可以被销毁，只能等待过期，因为 JWT 是无状态的，服务器不能控制用户的登录状态。不过可以把 JWT 加入黑名单，这样就可以实现过期功能。
 
 ### JWT 和 Cookie 的关系
 
@@ -227,49 +224,112 @@ JWT 可以存储在 Cookie 中（一般不这样做），也可以存储在 Loca
 
 ### JWT 使用
 
-客户端请求时在 `Authorization` 头中加入 `Bearer {jwt}` 字段，值为 JWT。
+在客户端发送请求时，可以在 HTTP 请求头的 `Authorization` 字段中包含 `Bearer {jwt}`，其中 `{jwt}` 是使用 JSON Web Token（JWT）格式的令牌。服务器通过对 JWT 的签名、过期时间以及密钥进行验证，来判断请求是否合法。
 
-服务器根据 JWT 的过期时间和签名和密钥验证请求。
+以下是基础的实现方式：
 
 ```typescript
-// author:github@sudoskys
+// author: github@sudoskys
 const jwt = require('jsonwebtoken');
 
 // 验证 JWT
 const token = req.headers.authorization.split(' ')[1];
 jwt.verify(token, 'secret', (err, decoded) => {
   if (err) {
-    res.status(401).send('Unauthorized');
+    res.status(401).send('Unauthorized'); // 验证失败处理
   } else {
-    res.send('Hello ' + decoded.name);
+    res.send('Hello ' + decoded.name);  // 验证成功，进行相关操作
   }
 });
 ```
 
-一般用 [npm jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken) 库来实现 JWT 的签发和验证。
+#### 依赖库
+推荐使用 [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken) 这个 NPM 库，它可以轻松完成 JWT 的生成、解析及验证工作。  
 
+### JWT 特性与注意事项
 
-JWT 无法销毁，只能等待过期，但是可以加入黑名单，这样就可以实现过期功能。
+1. **JWT 是自包含的**：  
+   JWT 中可以包含用户的身份信息和权限数据，这样服务器不需要查询数据库，通过对 JWT 的验证即可确认请求是否合法。这使得它非常适用于无状态（Stateless）的分布式系统。
 
-**由于JWT是自包含的，所以一般不需要后端查询数据库，只需要解码JWT即可。**
+2. **JWT 不能被销毁**：  
+   一旦签发了 JWT，它本质上是一个特殊的字符串，无法直接撤销或者删除。不过我们可以通过以下方式解决这一问题：
+   - **设置较短的过期时间**：JWT 的有效期不宜过长。
+   - **使用黑名单机制**：例如在服务端维护一个数据库或缓存，用来存储被吊销的 JWT。
 
-如果你存储JWT到数据库再比对，那和签发 Base64 编码的用户标识码有什么区别呢？
+> **注意**：如果你的系统为了验证 JWT 还需要查询数据库，与直接签发一个简单的 Base64 编码用户标识没有本质区别。JWT 的优势在于省略了后续的数据库查询操作。
 
 ### 延续登录状态
 
-你可以在每次请求时，请求接口检查JWT是不是快过期了，如果快过期了，就重新签发一个JWT，然后返回给客户端。
+为了保证用户始终在线，避免频繁重新登录，我们可以在每次请求时检查 JWT 的有效期。如果有效期即将到期，服务端可以重新生成一个新的 JWT 并返回给客户端。
 
-**不要签发一个永不过期的JWT。**
+**千万不要签发一个永不过期的 JWT！**  
+如果 JWT 永不过期，一旦它泄露，会导致用户信息长期暴露，存在巨大的安全风险。
+
+#### 使用 Refresh Token 更安全
 
 如果你的系统需要考虑安全性，我建议你添加 `Refresh Token` 机制，这样可以减少 JWT 被盗用的风险。
 
 比如当你不小心把 JWT 泄漏到网上，但是你启用了 `Refresh Token` 机制，那么 JWT 很快就会过期，保证了安全性。
 
-#### 双 Token 机制为什么更安全？
 
-使用刷新令牌 可能看起来是不必要的机制，因为当被中间人截获时，刷新令牌也会被截获。黑客可以使用刷新令牌来获取新的访问令牌。
+#### 为什么双 Token 更安全？
 
-但是这种机制其实是为了防止某些意外情况下（比如使用了不规范的库，把你的 JWT 乱扔），你的 JWT 通过 Cookie 泄漏到网上造成大量损失。
+有人可能会问：“刷新令牌被截获后，岂不是一样会带来问题？”  
+由于 Refresh Token 并不直接用于访问资源接口，它的泄露风险相对更小。同时，双 Token 机制可以有效减少长期有效令牌的存在。不规范操作导致 JWT 泄漏时，新的 Refresh 请求会更容易监管，尽可能降低系统风险。
 
-而使用刷新令牌机制，你的 JWT 会很快过期，黑客就没有机会使用你的 JWT 了。
+例如：
+- 如果你的 Access Token 通过 Cookie 泄漏到网上，攻击者只会获得一个即将过期的令牌。
+- 即便如此，攻击者无法使用该 Access Token 延续身份，因为服务器会强制要求 Refresh Token 来续签。
 
+
+### 双 Token 机制示例
+
+```typescript
+// 刷新 Token 机制示例
+const jwt = require('jsonwebtoken');
+
+// 定义密钥
+const ACCESS_TOKEN_SECRET = 'access_secret';
+const REFRESH_TOKEN_SECRET = 'refresh_secret';
+
+// 生成 Token
+function generateAccessToken(payload) {
+  return jwt.sign(payload, ACCESS_TOKEN_SECRET, { expiresIn: '5m' }); // 短有效期
+}
+
+function generateRefreshToken(payload) {
+  return jwt.sign(payload, REFRESH_TOKEN_SECRET, { expiresIn: '7d' }); // 长有效期
+}
+
+// 验证 Access Token
+app.post('/api/protected', (req, res) => {
+  const token = req.headers.authorization?.split(' ')[1];
+  if (!token) {
+    return res.status(401).send('Access Denied'); // Token 未提供
+  }
+  jwt.verify(token, ACCESS_TOKEN_SECRET, (err, decoded) => {
+    if (err) {
+      return res.status(403).send('Access Token Expired'); // Access Token 无效或过期
+    }
+    res.send(`Hello, ${decoded.name}`);
+  });
+});
+
+// 刷新 Access Token
+app.post('/api/refresh', (req, res) => {
+  const refreshToken = req.body.refreshToken;
+  if (!refreshToken) {
+    return res.status(401).send('Refresh Token Required');
+  }
+
+  jwt.verify(refreshToken, REFRESH_TOKEN_SECRET, (err, decoded) => {
+    if (err) {
+      return res.status(403).send('Invalid Refresh Token');
+    }
+
+    // 签发新 Access Token
+    const newAccessToken = generateAccessToken({ name: decoded.name });
+    res.json({ accessToken: newAccessToken });
+  });
+});
+```
