@@ -4,6 +4,7 @@ date: 2024-11-14 12:00:00
 tags:
   - Web
 cover: /img/cover/json_web_token.png
+mermaid: true
 ---
 
 JWT（JSON Web Token）是一种用于在网络应用之间传递信息的简洁、自包含的方法。JWT 本质上是一个字符串，它由三部分组成，分别是 Header、Payload 和 Signature。在 Web 开发中，JWT 通常用于用户认证和授权。
@@ -112,29 +113,44 @@ Session 需要服务器保存供比对的信息，但是如果请求的服务器
 
 - Session 集中存储：将 Session 数据存储在一个集中的地方，比如 Redis，这样每个服务器都可以访问 Session 数据。但是内存服务器下线整个系统就崩溃了（单点问题）。
 
-### SSO 单点登录的出现解决了两个问题
+### SSO 单点登录的出现
 
-[SSO](https://en.wikipedia.org/wiki/Single_sign-on)（Single Sign-On）是一种身份验证机制，允许用户使用一个身份验证凭证（比如用户名和密码）登录多个应用。
+随着时代发展，人们发明 [SSO (Single Sign-On)](https://en.wikipedia.org/wiki/Single_sign-on) 身份验证机制，允许用户使用一个身份凭证（例如用户名和密码）登录多个应用系统，消除了用户频繁登录的烦恼。
 
-为了解决网页浏览器单点登录的需求，SAML（Security Assertion Markup Language）协议被提出，它是一种基于 XML 的标准，用于在不同的安全域之间交换身份和授权信息。
+为了解决网页浏览器环境下的单点登录需求，**SAML（Security Assertion Markup Language）协议**应运而生。SAML 是一种基于 XML 的标准协议，用于在不同的安全域之间交换身份认证和授权信息。
 
-SAML 的核心思想是：用户登录后，身份提供者(IdP)给用户签发一个令牌，应用只需要验证令牌是否有效即可。不需要再查询数据库验证用户的用户名和密码。
+```mermaid
+sequenceDiagram
+    participant User
+    participant ServiceProvider as 服务提供者 (SP)
+    participant IdentityProvider as 身份提供者 (IdP)
 
-验证令牌涉及到对称以及非对称加密算法，因此无关服务器。
+    User->>ServiceProvider: 请求访问资源
+    ServiceProvider->>User: 重定向到 IdP 进行认证
+    User->>IdentityProvider: 提供用户凭证
+    IdentityProvider->>User: 认证完成，返回 SAML 断言 (Token)
+    User->>ServiceProvider: 提交 SAML 断言
+    ServiceProvider->>User: 验证成功，允许访问资源
+```
 
-之所以不需要查表验证用户密码，正是因为多台服务器持有一个密钥，请求内有原始数据和原始数据生成的签名，服务器通过密钥和原始数据生成签名，比对签名是否一致。如果一致就是自己人发出的请求。
+关于 SSO 和 SAML 可以看我的下一篇文章。这里我们先讲 JWT。
 
-不过 SAML 也有一些问题，比如 SAML 是基于 XML 的，XML 太复杂，而且 SAML 实现太复杂了。
+#### SAML 的局限性为 JWT 的崛起铺平了道路
 
-不用 XML 肯定是要用 JSON，所以 Json Web Token 就出现了。用 Json 来做令牌，对移动互联网比较友好，传输也方便。
+尽管 SAML 在单点登录领域曾占据核心地位，并为跨域认证提供了强有力的支持，但它也存在一些显著的局限性：
 
-## JWT(JSON Web Token) 的出现
+-  SAML 使用 XML 格式，消息更大，且 XML 的解析会消耗更多的资源，影响性能。
+- SAML 更适合 Web 应用单点登录场景，而在移动端与 RESTful API 中使用较为困难。
 
-它可能是目前最流行的身份验证和授权解决方案。
+这些问题使得 SAML 在现代化应用中的适用性逐渐降低。特别是在移动互联网高速发展的时代，这些技术难点和性能负担成为明显的劣势。
 
-JWT 是一种开放标准（[RFC 7519](https://tools.ietf.org/html/rfc7519)），它定义了一种简洁的、自包含的方法，用于在各方之间传递信息。
+## JWT 的出现（2010 年代，OAuth2 和 OpenID Connect 流行之后）
 
-JWT 本质上是一个字符串，它由三部分组成，分别是 Header、Payload 和 Signature。
+JSON Web Token 开放标准 (JWT)（[RFC 7519](https://tools.ietf.org/html/rfc7519)） 起初是 OAuth2 体系中的一种高效的 Token 表现形式，但渐渐被独立作为认证和授权的核心解决方案。定义了一种简洁的、自包含的方法，更轻量、简单、灵活。
+
+它借鉴了 SAML 的一些核心思想，例如令牌签名和无状态认证，但在技术设计上进行了彻底优化，成为更加轻量级和灵活的解决方案。
+
+JWT 本质上是一个字符串，它由三部分组成，分别是 `Header`.`Payload`.`Signature`，其内容使用 `Base64` 编码并用 `.` 连接，让令牌既能包含结构化数据，又可以通过签名验证安全性。
 
 ```json5
 // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c

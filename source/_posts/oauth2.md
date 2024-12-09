@@ -60,6 +60,8 @@ sequenceDiagram
 
 SAML 是一种基于 XML 的标准，用于在身份提供者和服务提供者之间交换身份和授权信息。
 
+
+
 ### Oauth 2.0
 
 [Oauth 2.0](https://oauth.net/2/) 是用于授权的行业标准协议。
