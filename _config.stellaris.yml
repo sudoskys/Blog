@@ -103,9 +103,9 @@ footer:
     #   icon: '<img width="24" height="24" src="https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.3/social/942ebbf1a4b91.svg"/>'
     #   url: /about/#comments
     darkmode:
-      auto: '<img no-lazy width="24" height="24" src="https://ydz-cos.zyglq.cn/blog-static/images/sun-moon.svg"/>'
-      light: '<img no-lazy width="24" height="24" src="https://ydz-cos.zyglq.cn/blog-static/images/sun-fill.svg"/>'
-      dark: '<img no-lazy width="24" height="24" src="https://ydz-cos.zyglq.cn/blog-static/images/moon-fill.svg"/>'
+      auto: '<img no-lazy width="24" height="24" src="https://unpkg.com/lucide-static@latest/icons/laptop.svg"/>'
+      light: '<img no-lazy width="24" height="24" src="https://unpkg.com/lucide-static@0.511.0/icons/sun.svg"/>'
+      dark: '<img no-lazy width="24" height="24" src="https://unpkg.com/lucide-static@0.511.0/icons/moon.svg"/>'
   sitemap:
     "博客":
       - "[💡 近期发布](/)"
