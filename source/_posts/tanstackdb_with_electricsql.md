@@ -3,7 +3,7 @@ title: Using TanStack DB & ElectricSQL to build real-time apps with optimistic u
 date: 2025-6-30 15:00:00
 tags:
    - Realtime
-   - TanStack DB
+   - TanStackDB
    - ElectricSQL
 cover: /img/cover/tanstackdb_with_electricsql.png
 mermaid: true
