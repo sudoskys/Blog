@@ -5,6 +5,8 @@ tags:
    - Realtime
    - TanStack DB
    - ElectricSQL
+cover: /img/cover/tanstackdb_with_electricsql.png
+mermaid: true
 ---
 
 An Integration Guide to TanStack DB & ElectricSQL: Building Real-Time Apps with Optimistic Updates
