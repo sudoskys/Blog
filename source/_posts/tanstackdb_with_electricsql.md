@@ -66,6 +66,7 @@ Our authentication system employs a dual JWT model for flexible and secure data 
 The client exchanges tokens by calling the backend's `/shapes/auth-token` endpoint.
 
 ```typescript
+// File path: apps/api/src/routes/main.ts
 // A Hono-based backend route implementation
 
 mainApp.post(
@@ -513,7 +514,7 @@ This mechanism elegantly guarantees that when the `commit()` function returns, o
 
 ## 3. The Payoff: Real-time UI with `useLiveQuery`
 
-With a secure data channel and reliable data operations in place, we can now reap the benefits in the UI layer. TanStack DB's `useLiveQuery` hook allows us to effortlessly subscribe to changes in a Collection.
+With a secure data channel and reliable data operations in place, we can now reap the benefits in the UI layer. TanStack DB's `useLiveQuery` hook allows us to effortlessly subscribe to changes in a Collection. To keep the example concise, the code below only demonstrates the core data subscription and rendering logic, omitting any handling for initial loading or error states.
 
 ```typescript
 // File path: apps/web/src/components/question-answer-list.tsx
@@ -523,11 +524,15 @@ import { createMessagesCollection } from '@/hooks/data/collections';
 function QuestionAnswerList({ conversationId }: { conversationId: string }) {
   // Subscribe to the message collection for a specific conversation
   const messagesCollection = useMemo(() => createMessagesCollection(conversationId), [conversationId]);
-  const { data: messages, isLoading } = useLiveQuery(q =>
+
+  // `useLiveQuery` synchronously returns the current state of the local database,
+  // so it does not have an `isLoading` flag. Any loading state related to remote
+  // data synchronization (e.g., ElectricSQL's initial sync) should be managed
+  // by higher-level logic.
+  // See for more info: https://github.com/TanStack/db/issues/93
+  const messages = useLiveQuery(q =>
     q.from({ messagesCollection }).orderBy('@created_at').select('@*')
   );
-
-  if (isLoading) return <div>Loading...</div>;
 
   return (
     <div className="message-container">
