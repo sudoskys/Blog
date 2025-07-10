@@ -18,9 +18,9 @@ This document is an in-depth technical guide providing a clear, reusable example
 > This guide was written based on the following key dependency versions:
 > - `@electric-sql/client`: `^1.0.4`
 > - `@electric-sql/react`: `^1.0.4`
-> - `@tanstack/db`: `^0.0.12`
-> - `@tanstack/react-db`: `^0.0.13`
-> - `@tanstack/db-collections`: `^0.0.16`
+> - `@tanstack/db`: `^0.0.17`
+> - `@tanstack/react-db`: `^0.0.17`
+> - `@tanstack/db-collections`: `^0.0.21`
 
 ## Architecture Overview
 
