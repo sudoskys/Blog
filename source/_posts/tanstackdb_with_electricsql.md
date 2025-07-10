@@ -351,7 +351,9 @@ export async function sendQuestionAction(params: {
 
       // 2. Wait for ElectricSQL to sync this transaction back to the client.
       // This is the key to the seamless "optimistic -> real data" transition.
-      await messagesCollection.utils.awaitTxId(response.txid);
+      // Note: awaitTxId blocks UI rendering, so consider using it asynchronously
+      // in production to avoid freezing the interface during sync operations.
+      messagesCollection.utils.awaitTxId(response.txid);
     },
   });
 
@@ -512,9 +514,11 @@ The `txid` is the key that bridges the gap between the frontend's optimistic upd
 
 This mechanism elegantly guarantees that when the `commit()` function returns, our local database not only contains the optimistic placeholders but that these placeholders have already been overwritten by the persisted, true data from the server.
 
+> **Performance Note**: `awaitTxId` is a blocking operation that can freeze the UI during synchronization. In production applications, consider using it asynchronously or implementing a non-blocking pattern to maintain responsive user interfaces.
+
 ## 3. The Payoff: Real-time UI with `useLiveQuery`
 
-With a secure data channel and reliable data operations in place, we can now reap the benefits in the UI layer. TanStack DB's `useLiveQuery` hook allows us to effortlessly subscribe to changes in a Collection. To keep the example concise, the code below only demonstrates the core data subscription and rendering logic, omitting any handling for initial loading or error states.
+With a secure data channel and reliable data operations in place, we can now reap the benefits in the UI layer. TanStack DB's `useLiveQuery` hook allows us to effortlessly subscribe to changes in a Collection. The latest version of TanStack DB now supports loading states, making it easier to handle initial data synchronization and empty states.
 
 ```typescript
 // File path: apps/web/src/components/question-answer-list.tsx
@@ -525,18 +529,23 @@ function QuestionAnswerList({ conversationId }: { conversationId: string }) {
   // Subscribe to the message collection for a specific conversation
   const messagesCollection = useMemo(() => createMessagesCollection(conversationId), [conversationId]);
 
-  // `useLiveQuery` synchronously returns the current state of the local database,
-  // so it does not have an `isLoading` flag. Any loading state related to remote
-  // data synchronization (e.g., ElectricSQL's initial sync) should be managed
-  // by higher-level logic.
-  // See for more info: https://github.com/TanStack/db/issues/93
-  const messages = useLiveQuery(q =>
-    q.from({ messagesCollection }).orderBy('@created_at').select('@*')
+  // The new useLiveQuery syntax with destructured data and loading state
+  const {
+    data: messages,
+    isLoading,
+  } = useLiveQuery(q =>
+    q.from({ messagesCollection })
+      .orderBy(({ messagesCollection }) => messagesCollection.created_at, 'desc')
   );
+
+  // Handle loading state - when there's no data, it stays in loading state
+  if (isLoading) {
+    return <div className="loading">Loading messages...</div>;
+  }
 
   return (
     <div className="message-container">
-      {messages.map(msg => (
+      {messages?.map(msg => (
         <div key={msg.id} className={`message role-${msg.role} status-${msg.status}`}>
           <p>{msg.content}</p>
         </div>
@@ -545,6 +554,7 @@ function QuestionAnswerList({ conversationId }: { conversationId: string }) {
   );
 }
 ```
+
 When a user submits a new question, `sendQuestionAction`'s `transaction.mutate()` immediately inserts the placeholders into the local database. `useLiveQuery` detects this change, and the `QuestionAnswerList` component re-renders instantly, showing the new question and "Generating answer...", achieving a perfect optimistic update. When the backend's answer generation task completes and updates the database, ElectricSQL syncs the change back to the client. `useLiveQuery` triggers another re-render, updating the answer placeholder with the real response.
 
 ## 4. End-to-End Flow
