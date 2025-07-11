@@ -18,9 +18,9 @@ This document is an in-depth technical guide providing a clear, reusable example
 > This guide was written based on the following key dependency versions:
 > - `@electric-sql/client`: `^1.0.4`
 > - `@electric-sql/react`: `^1.0.4`
-> - `@tanstack/db`: `^0.0.17`
-> - `@tanstack/react-db`: `^0.0.17`
-> - `@tanstack/db-collections`: `^0.0.21`
+> - `@tanstack/db`: `^0.0.20`
+> - `@tanstack/react-db`: `^0.0.20`
+> - `@tanstack/db-collections`: `^0.0.24`
 
 ## Architecture Overview
 
@@ -461,7 +461,7 @@ export class MessageService {
    * A transaction wrapper that ensures all operations run within a transaction and returns the transaction ID.
    */
   private async withTransaction<T>(
-    callback: (tx: DrizzleTransaction, txid: string) => Promise<T>,
+    callback: (tx: DrizzleTransaction, txid: number) => Promise<T>,
   ): Promise<T> {
     // Use Drizzle's transaction method to start a database transaction
     return await db.transaction(async (tx) => {
@@ -474,18 +474,50 @@ export class MessageService {
 
   /**
    * Gets the current transaction's ID.
+   * Internal function used by various transaction wrappers
+   *
+   * Uses pg_current_xact_id()::xid::text to get the 32-bit internal xid,
+   * which matches the ID sent in PostgreSQL logical replication streams,
+   * and is the ID we use for matching in Electric
    */
-  private async getTxId(tx: DrizzleTransaction): Promise<string> {
-    // Execute a raw SQL query to call PostgreSQL's pg_current_xact_id() function
-    const result = await tx.execute(sql`SELECT pg_current_xact_id() as txid`);
-    // Return the transaction ID as a string
-    return String((result.rows[0] as { txid: number }).txid);
+  private async getTxId(tx: DrizzleTransaction): Promise<number> {
+    try {
+      // Use pg_current_xact_id()::xid::text to get the 32-bit internal xid
+      // ::xid conversion removes the epoch, giving the raw 32-bit value
+      // This matches the value PostgreSQL sends in logical replication streams
+      const result = await tx.execute(sql`SELECT pg_current_xact_id()::xid::text as txid`);
+      const txid = (result.rows[0] as { txid: string })?.txid;
+
+      if (txid === undefined) {
+        throw new Error("Failed to get transaction ID from pg_current_xact_id");
+      }
+
+      return Number.parseInt(txid, 10);
+    }
+    catch (error) {
+      // Fallback to deprecated txid_current()
+      console.warn("[Transaction] pg_current_xact_id() failed, falling back to txid_current():", error);
+      try {
+        const result = await tx.execute(sql`SELECT txid_current() as txid`);
+        const txid = (result.rows[0] as { txid: bigint })?.txid;
+
+        if (txid === undefined) {
+          throw new Error("Failed to get transaction ID from txid_current");
+        }
+
+        return Number(txid);
+      }
+      catch (fallbackError) {
+        console.error("[Transaction] Both txid methods failed:", fallbackError);
+        throw new Error("Failed to get transaction ID from all available methods");
+      }
+    }
   }
 
   /**
    * Creates the question and answer placeholders in a single transaction.
    */
-  async createQuestionAndAnswerPlaceholder(params: ...): Promise<{ txid: string }> {
+  async createQuestionAndAnswerPlaceholder(params: ...): Promise<{ txid: number }> {
     // Execute operations via withTransaction to ensure atomicity and get the txid
     return this.withTransaction(async (tx, txid) => {
       // 1. Insert question message...
