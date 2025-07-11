@@ -351,9 +351,8 @@ export async function sendQuestionAction(params: {
 
       // 2. Wait for ElectricSQL to sync this transaction back to the client.
       // This is the key to the seamless "optimistic -> real data" transition.
-      // Note: awaitTxId blocks UI rendering, so consider using it asynchronously
-      // in production to avoid freezing the interface during sync operations.
-      messagesCollection.utils.awaitTxId(response.txid);
+      // IMPORTANT: awaitTxId must be awaited, otherwise optimistic updates will be ignored.
+      await messagesCollection.utils.awaitTxId(response.txid);
     },
   });
 
@@ -514,7 +513,7 @@ The `txid` is the key that bridges the gap between the frontend's optimistic upd
 
 This mechanism elegantly guarantees that when the `commit()` function returns, our local database not only contains the optimistic placeholders but that these placeholders have already been overwritten by the persisted, true data from the server.
 
-> **Performance Note**: `awaitTxId` is a blocking operation that can freeze the UI during synchronization. In production applications, consider using it asynchronously or implementing a non-blocking pattern to maintain responsive user interfaces.
+> **Critical Requirement**: `awaitTxId` **must** be awaited. If you don't use `await`, the UI will flicker and optimistic updates won't work properly.
 
 ## 3. The Payoff: Real-time UI with `useLiveQuery`
 
