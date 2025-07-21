@@ -16,6 +16,10 @@ An Integration Guide to TanStack DB & ElectricSQL: Building Real-Time Apps with 
 This document is an in-depth technical guide providing a clear, reusable example of how to combine TanStack DB and ElectricSQL to build modern web applications with **real-time data synchronization**, **secure optimistic updates**, and **transactional consistency**. We will explore the core architecture and best practices through a Q&A application centered around a `messages` table.
 
 > This guide was written based on the following key dependency versions:
+
+> - `@electric-sql/client`: `^1.0.4`
+> - `@electric-sql/experimental`: `^1.0.4`
+> - `@electric-sql/react`: `^1.0.4`
 > - `@tanstack/db`: `^0.0.27`
 > - `@tanstack/react-db`: `^0.0.27`
 > - `@tanstack/electric-db-collection`: `^0.0.9`
