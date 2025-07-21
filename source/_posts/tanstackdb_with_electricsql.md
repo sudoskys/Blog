@@ -16,11 +16,9 @@ An Integration Guide to TanStack DB & ElectricSQL: Building Real-Time Apps with 
 This document is an in-depth technical guide providing a clear, reusable example of how to combine TanStack DB and ElectricSQL to build modern web applications with **real-time data synchronization**, **secure optimistic updates**, and **transactional consistency**. We will explore the core architecture and best practices through a Q&A application centered around a `messages` table.
 
 > This guide was written based on the following key dependency versions:
-> - `@electric-sql/client`: `^1.0.4`
-> - `@electric-sql/react`: `^1.0.4`
-> - `@tanstack/db`: `^0.0.20`
-> - `@tanstack/react-db`: `^0.0.20`
-> - `@tanstack/db-collections`: `^0.0.24`
+> - `@tanstack/db`: `^0.0.27`
+> - `@tanstack/react-db`: `^0.0.27`
+> - `@tanstack/electric-db-collection`: `^0.0.9`
 
 ## Architecture Overview
 
@@ -159,7 +157,8 @@ On the client, we create a `createMessagesCollection` factory function that enca
 ```typescript
 // File path: apps/web/src/hooks/data/collections.ts
 import { createCollection } from '@tanstack/react-db';
-import { electricCollectionOptions, type ElectricCollectionUtils } from '@tanstack/db-collections';
+import type { ElectricCollectionUtils } from '@tanstack/electric-db-collection';
+import { electricCollectionOptions } from '@tanstack/electric-db-collection';
 import { selectMessageSchema, type Message } from '@/db/schema'; // Zod Schema
 import { createShapeConfig } from './shape-config'; // Import the Shape config factory
 import { getApiBaseUrl } from './api'; // Import the API base URL getter
