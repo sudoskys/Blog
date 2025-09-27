@@ -20,9 +20,9 @@ This document is an in-depth technical guide providing a clear, reusable example
 > - `@electric-sql/client`: `^1.0.4`
 > - `@electric-sql/experimental`: `^1.0.4`
 > - `@electric-sql/react`: `^1.0.4`
-> - `@tanstack/db`: `^0.0.27`
-> - `@tanstack/react-db`: `^0.0.27`
-> - `@tanstack/electric-db-collection`: `^0.0.9`
+> - `@tanstack/db`: `^0.4.1`
+> - `@tanstack/react-db`: `^0.1.23`
+> - `@tanstack/electric-db-collection`: `^0.1.25`
 
 ## Architecture Overview
 
@@ -86,7 +86,7 @@ mainApp.post(
       const conversationId = params?.conversationId;
       if (!conversationId) {
         // Disallow access to any messages if conversationId is not provided
-        whereClause = `conversation_id = ''`; 
+        whereClause = `conversation_id = ''`;
       } else {
         // Business logic to verify user's ownership of the `conversationId` should be here.
         // For example, query the database to confirm the `conversationId` belongs to the current `user.userId`.
@@ -94,6 +94,13 @@ mainApp.post(
         if (!hasPermission) {
           throw new ForbiddenError("No permission to access messages of this conversation");
         }
+
+        // NOTE: ElectricSQL now supports subqueries (https://github.com/electric-sql/electric/discussions/2931)
+        // This allows for more sophisticated authorization patterns. Instead of simple WHERE clauses,
+        // you could use subqueries to filter data based on complex permission models:
+        // Example: `conversation_id IN (SELECT id FROM conversations WHERE user_id = '${user.userId}')`
+        // This would eliminate the need for separate permission checks like checkConversationPermission above.
+
         // Authorize access to all messages in this conversation
         whereClause = `conversation_id = '${conversationId}'`;
       }
@@ -398,6 +405,14 @@ export function createQuestionPlaceholder(data: Partial<Message>): Message {
     created_at: now,
     updated_at: now,
     // ... other schema-required fields should have default values
+
+    // WARNING: Avoid storing UI-critical data in JSONB fields
+    // JSONB fields can severely impact UI performance when used for frequently accessed data.
+    // Additionally, ElectricSQL client SDK converts JSONB to the generic 'Json' type,
+    // requiring manual type assertions (no other workaround currently exists).
+    // Example of the issue:
+    // metadata: data.metadata as MyMetadataType // Manual type assertion required
+    // Best practice: Use JSONB only for rarely accessed supplementary data.
   };
 }
 
@@ -571,6 +586,13 @@ function QuestionAnswerList({ conversationId }: { conversationId: string }) {
     q.from({ messagesCollection })
       .orderBy(({ messagesCollection }) => messagesCollection.created_at, 'desc')
   );
+
+  // NOTE on JSONB fields in messages:
+  // If your messages contain JSONB fields, they will be typed as generic 'Json' by ElectricSQL.
+  // You'll need to add type assertions when accessing these fields:
+  // Example:
+  //   const metadata = message.metadata as MessageMetadata;
+  // This is a known limitation with no current workaround other than manual type assertions.
 
   // Handle loading state - when there's no data, it stays in loading state
   if (isLoading) {
