@@ -95,12 +95,6 @@ mainApp.post(
           throw new ForbiddenError("No permission to access messages of this conversation");
         }
 
-        // NOTE: ElectricSQL now supports subqueries (https://github.com/electric-sql/electric/discussions/2931)
-        // This allows for more sophisticated authorization patterns. Instead of simple WHERE clauses,
-        // you could use subqueries to filter data based on complex permission models:
-        // Example: `conversation_id IN (SELECT id FROM conversations WHERE user_id = '${user.userId}')`
-        // This would eliminate the need for separate permission checks like checkConversationPermission above.
-
         // Authorize access to all messages in this conversation
         whereClause = `conversation_id = '${conversationId}'`;
       }
@@ -168,39 +162,71 @@ On the client, we create a `createMessagesCollection` factory function that enca
 ```typescript
 // File path: apps/web/src/hooks/data/collections.ts
 import { createCollection } from '@tanstack/react-db';
-import type { ElectricCollectionUtils } from '@tanstack/electric-db-collection';
 import { electricCollectionOptions } from '@tanstack/electric-db-collection';
 import { selectMessageSchema, type Message } from '@/db/schema'; // Zod Schema
 import { createShapeConfig } from './shape-config'; // Import the Shape config factory
 import { getApiBaseUrl } from './api'; // Import the API base URL getter
 
-// Global cache to avoid creating duplicate Collection instances for the same conversation
-const collectionsCache = new Map<string, Collection<Message, string, ElectricCollectionUtils>>();
-
-export function createMessagesCollection(conversationId: string): Collection<Message, string, ElectricCollectionUtils> {
-  const cacheKey = `messages-${conversationId}`;
-  if (collectionsCache.has(cacheKey)) {
-    return collectionsCache.get(cacheKey)!;
-  }
+// Internal function to create the actual collection
+function _createMessagesCollection(conversationId: string) {
+  // Optional: specify columns to sync for performance optimization
+  const columnsToSync = [
+    'id',
+    'conversation_id',
+    'content',
+    'role',
+    'status',
+    'created_at',
+    'updated_at',
+  ].join(',');
 
   // `createShapeConfig` is a helper function encapsulating auth and error handling logic
-  const shapeConfig = createShapeConfig('messages', { conversationId });
+  const shapeConfig = createShapeConfig('messages', { conversationId }, undefined, columnsToSync);
 
-  const collection = createCollection(
+  return createCollection(
     electricCollectionOptions({
       id: `messages-${conversationId}`,
       schema: selectMessageSchema,
       shapeOptions: {
-        url: `${getApiBaseUrl()}/shape`, // Request our own secure proxy endpoint
+        url: shapeConfig.url || `${getApiBaseUrl()}/shape`,
         params: shapeConfig.params,
-        headers: shapeConfig.headers,   // Contains logic to dynamically get the Shape Token
-        onError: shapeConfig.onError,     // Handles 401 errors for automatic retries
+        headers: shapeConfig.headers,
+        onError: shapeConfig.onError,
+        parser: shapeConfig.parser, // Optional custom parser for data transformation
       },
-      getKey: item => item.id,
+      getKey: (item: Message) => item.id,
     }),
   );
+}
 
-  collectionsCache.set(cacheKey, collection);
+// Type alias for better type safety
+type MessagesCollectionType = ReturnType<typeof _createMessagesCollection>;
+
+// Global cache to avoid creating duplicate Collection instances
+const messagesCollectionsCache = new Map<string, MessagesCollectionType>();
+
+/**
+ * Creates a messages collection with caching
+ *
+ * @example
+ * // ✅ Correct usage
+ * const messagesCollection = createMessagesCollection(conversationId);
+ *
+ * // ❌ Wrong usage - DO NOT wrap in useMemo
+ * const messagesCollection = useMemo(() => createMessagesCollection(conversationId), [conversationId]);
+ *
+ * @param conversationId - The conversation ID to filter messages
+ * @returns Cached collection instance
+ */
+export function createMessagesCollection(conversationId: string) {
+  const cacheKey = `messages-${conversationId}`;
+
+  if (messagesCollectionsCache.has(cacheKey)) {
+    return messagesCollectionsCache.get(cacheKey)!;
+  }
+
+  const collection = _createMessagesCollection(conversationId);
+  messagesCollectionsCache.set(cacheKey, collection);
   return collection;
 }
 ```
@@ -405,14 +431,6 @@ export function createQuestionPlaceholder(data: Partial<Message>): Message {
     created_at: now,
     updated_at: now,
     // ... other schema-required fields should have default values
-
-    // WARNING: Avoid storing UI-critical data in JSONB fields
-    // JSONB fields can severely impact UI performance when used for frequently accessed data.
-    // Additionally, ElectricSQL client SDK converts JSONB to the generic 'Json' type,
-    // requiring manual type assertions (no other workaround currently exists).
-    // Example of the issue:
-    // metadata: data.metadata as MyMetadataType // Manual type assertion required
-    // Best practice: Use JSONB only for rarely accessed supplementary data.
   };
 }
 
@@ -585,14 +603,7 @@ function QuestionAnswerList({ conversationId }: { conversationId: string }) {
   } = useLiveQuery(q =>
     q.from({ messagesCollection })
       .orderBy(({ messagesCollection }) => messagesCollection.created_at, 'desc')
-  );
-
-  // NOTE on JSONB fields in messages:
-  // If your messages contain JSONB fields, they will be typed as generic 'Json' by ElectricSQL.
-  // You'll need to add type assertions when accessing these fields:
-  // Example:
-  //   const metadata = message.metadata as MessageMetadata;
-  // This is a known limitation with no current workaround other than manual type assertions.
+);
 
   // Handle loading state - when there's no data, it stays in loading state
   if (isLoading) {
@@ -656,4 +667,228 @@ sequenceDiagram
     Electric-->>LocalDB: Pushes final reply to client
     Note right of LocalDB: UI automatically updates to show the final reply
 ```
-With this architecture, we have successfully built a powerful real-time application in a declarative, fault-tolerant, and efficient manner. This pattern elegantly encapsulates the complexities of UI updates, data persistence, and real-time synchronization, allowing developers to focus on implementing business logic. 
+With this architecture, we have successfully built a powerful real-time application in a declarative, fault-tolerant, and efficient manner. This pattern elegantly encapsulates the complexities of UI updates, data persistence, and real-time synchronization, allowing developers to focus on implementing business logic.
+
+## 5. Troubleshooting
+
+### 5.1. JSONB Fields and TypeScript Types
+
+When working with PostgreSQL JSONB fields in ElectricSQL, you'll encounter some important limitations and performance considerations:
+
+#### Performance Impact
+
+**⚠️ WARNING**: Avoid using JSONB fields for UI-critical data that is frequently accessed or rendered. JSONB fields can severely impact UI performance because:
+- Each access requires parsing the JSON structure
+- React re-renders are triggered for the entire JSONB object even when only a nested property changes
+- Large JSONB structures can cause significant memory overhead
+
+**Best Practice**: Use JSONB only for supplementary data that is:
+- Rarely accessed in the UI
+- Not part of the core rendering logic
+- Used for metadata, configuration, or audit trails
+
+#### TypeScript Type Issues
+
+ElectricSQL's client SDK converts all JSONB fields to the generic `Json` type, which loses all type information. There is currently no automatic way to preserve types, requiring manual type assertions.
+
+**Problem Example**:
+```typescript
+// Database schema definition with Drizzle ORM
+const messages = pgTable("messages", {
+  id: text("id").primaryKey(),
+  content: text("content").notNull(),
+  metadata: jsonb("metadata").$type<{
+    author: { name: string; id: string };
+    tags: string[];
+    priority: number;
+  }>(),
+});
+
+// Type inference from Drizzle
+type Message = typeof messages.$inferSelect;
+// Message.metadata type is: { author: ..., tags: ..., priority: ... } | null
+
+// What ElectricSQL returns after synchronization
+const selectMessageSchema = createSelectSchema(messages);
+type ElectricMessage = z.infer<typeof selectMessageSchema>;
+// ElectricMessage.metadata type is: Json | null (type information lost!)
+```
+
+**Solution - Transform Functions with Type Assertions**:
+```typescript
+// Using Drizzle-generated types and Zod schemas
+const messages = pgTable("messages", {
+  id: text("id").primaryKey(),
+  content: text("content").notNull(),
+  metadata: jsonb("metadata").$type<MessageMetadata>(),
+  log_data: jsonb("log_data").$type<LogType1 | LogType2 | LogType3>(),
+});
+
+type Message = typeof messages.$inferSelect;
+const selectMessageSchema = createSelectSchema(messages);
+
+// Transform function to restore proper types after ElectricSQL sync
+function transformElectricMessagesToTyped(
+  electricMessages: Array<z.infer<typeof selectMessageSchema>>
+): Message[] {
+  return electricMessages.map(msg => ({
+    ...msg,
+    // Type assertions required for JSONB fields
+    metadata: msg.metadata as Message['metadata'],
+    log_data: msg.log_data as Message['log_data'],
+  }));
+}
+
+// Usage in collection with automatic transformation
+export function createMessagesCollection(conversationId: string) {
+  const collection = createCollection(
+    electricCollectionOptions({
+      id: `messages-${conversationId}`,
+      schema: selectMessageSchema,
+      shapeOptions: { /* ... */ },
+      getKey: item => item.id,
+    }),
+  );
+
+  // Wrap collection methods to include transformation
+  return {
+    ...collection,
+    findMany: async (filter?: any) => {
+      const results = await collection.findMany(filter);
+      return transformElectricMessagesToTyped(results);
+    },
+    // Add other wrapped methods as needed
+  };
+}
+```
+
+**Recommended Approach**:
+1. **Flatten your data structure when possible** - use separate columns instead of JSONB to maintain type safety
+2. **Use Drizzle's type inference with transform functions** - Define types in your Drizzle schema and create transform functions
+3. **Implement proper collection caching pattern** to avoid duplicate instances:
+
+```typescript
+// Real-world example: Collection factory with proper caching
+import { pgTable, text, jsonb, timestamp } from 'drizzle-orm/pg-core';
+import { createSelectSchema } from 'drizzle-zod';
+import type { ShapeOptions } from '@electric-sql/react';
+
+// Define your table with typed JSONB
+const documents = pgTable("documents", {
+  id: text("id").primaryKey(),
+  status: text("status").notNull(),
+  metadata: jsonb("metadata").$type<{
+    processor: string;
+    version: string;
+    tags: string[];
+  }>(),
+  created_at: timestamp("created_at").defaultNow(),
+  updated_at: timestamp("updated_at").defaultNow(),
+});
+
+// Get proper TypeScript types
+type Document = typeof documents.$inferSelect;
+const selectDocumentSchema = createSelectSchema(documents);
+
+// Internal collection factory (not exported)
+function _createDocumentsCollection() {
+  // Optimize by selecting specific columns
+  const columnsToSync = [
+    'id',
+    'status',
+    'metadata',
+    'created_at',
+    'updated_at',
+  ].join(',');
+
+  // Custom parser for date handling and type restoration
+  const parser = {
+    timestamp: (date: string) => new Date(date),
+  } as unknown as ShapeOptions['parser'];
+
+  const shapeConfig = createShapeConfig('documents', {}, parser, columnsToSync);
+
+  return createCollection(
+    electricCollectionOptions({
+      id: 'documents',
+      schema: selectDocumentSchema,
+      shapeOptions: {
+        url: shapeConfig.url,
+        params: shapeConfig.params,
+        headers: shapeConfig.headers,
+        onError: shapeConfig.onError,
+        parser: shapeConfig.parser,
+      },
+      getKey: (item: Document) => item.id,
+    }),
+  );
+}
+
+// Type alias for the collection
+type DocumentsCollectionType = ReturnType<typeof _createDocumentsCollection>;
+
+// Cache instance
+const documentsCollectionsCache = new Map<string, DocumentsCollectionType>();
+
+/**
+ * Creates a documents collection with caching
+ *
+ * @example
+ * // ✅ Correct usage - direct call
+ * const docsCollection = createDocumentsCollection();
+ *
+ * // ❌ Wrong usage - DO NOT wrap in useMemo
+ * const docsCollection = useMemo(() => createDocumentsCollection(), []);
+ *
+ * @returns Cached collection instance
+ */
+export function createDocumentsCollection() {
+  const cacheKey = 'documents';
+
+  if (documentsCollectionsCache.has(cacheKey)) {
+    return documentsCollectionsCache.get(cacheKey)!;
+  }
+
+  const collection = _createDocumentsCollection();
+  documentsCollectionsCache.set(cacheKey, collection);
+  return collection;
+}
+```
+
+**Key Points**:
+- **Separate internal factory from public API**: Use `_createCollection` internally
+- **Type-safe caching**: Use `ReturnType<typeof _createCollection>` for cache types
+- **Never use `useMemo`**: Collections already handle their own caching
+- **Column selection**: Optimize sync performance by specifying columns
+- **Custom parsers**: Handle date conversions and other transformations
+
+### 5.2. Simplified Authentication with Subqueries
+
+ElectricSQL now supports subqueries (https://github.com/electric-sql/electric/discussions/2931), which can significantly simplify your authentication and authorization logic.
+
+**Before (Complex Permission Checks)**:
+```typescript
+// Multiple database queries to check permissions
+const hasPermission = await checkConversationPermission(user.userId, conversationId);
+if (!hasPermission) {
+  throw new ForbiddenError("No permission");
+}
+whereClause = `conversation_id = '${conversationId}'`;
+```
+
+**After (Using Subqueries)**:
+```typescript
+// Single WHERE clause with subquery handles everything
+whereClause = `conversation_id IN (
+  SELECT c.id FROM conversations c
+  JOIN conversation_members cm ON c.id = cm.conversation_id
+  WHERE cm.user_id = '${user.userId}'
+    AND cm.role IN ('owner', 'member')
+)`;
+```
+
+This approach:
+- Reduces round trips to the database
+- Moves authorization logic to the database layer
+- Simplifies your backend code
+- Ensures consistency between permission checks 
