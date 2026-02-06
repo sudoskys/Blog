@@ -293,7 +293,7 @@ plugins:
   # npm install hexo-renderer-markdown-it-plus --save
   katex:
     enabled: true
-    css: https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css
+    css: https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.css
 
   # Mermaid - markdwon to flow chart, seq chart, class chart ...
   # 需要安装 npm install --save hexo-filter-mermaid-diagrams
