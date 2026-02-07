@@ -9,6 +9,13 @@ mermaid: true
 original: true
 ---
 
+**sudoskys**
+GitHub: [github.com/sudoskys](https://github.com/sudoskys)
+
+*Correspondence: sudoskys@github*
+
+---
+
 ## 摘要
 
 大语言模型（LLM）驱动的交互叙事在长会话中面临两个结构性问题：**世界状态漂移**（角色遗忘已知事实、空间位置矛盾、因果链断裂）与**叙事节奏退化**（张力单调递减或混乱振荡、伏笔无回收、情节碎片化）。现有工程方案——包括世界书（World Book）注入、摘要压缩、检索增强生成（RAG）——在经验上缓解了部分症状，但缺乏统一的理论框架来解释为什么某些方案有效、在什么条件下失效、以及最优策略的理论极限在哪里。
