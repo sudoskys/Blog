@@ -57,7 +57,7 @@ article:
   # 分享
   share: [wechat, weibo, telegram, email, link]
   related_posts:
-    enabled: true
+    enabled: false
     max_count: 3
     auto_cover: false
   outdated_check:
